@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+ 
+
+model University {
+  id          String   @id @default(uuid())
+  name        String
+  country     String
+  region      String   // Europe, UK, US, Asia
+  logo        String?
+  createdAt   DateTime @default(now())
+  programs    Program[]
+}
+
+model Program {
+  id              String   @id @default(uuid())
+  title           String
+  slug            String   @unique
+  overview        String?   @db.LongText
+  curriculum      Json?
+  description     String
+  heroImage       String?
+  intake          String?
+  accreditation   String?
+  scholarships    Boolean  @default(false)
+  emiAvailable   Boolean  @default(false)
+  emiMonths      Int?
+  applicationFee Float?
+  durationMonths  Int
+  mode            ProgramMode
+  credits         Int?
+  tuition         Float
+  currency        String   @default("USD")
+  degreeLevel     DegreeLevel
+  subjectArea     SubjectArea
+  featured        Boolean  @default(false)
+  trending        Boolean  @default(false)
+  newLaunch       Boolean  @default(false)
+  dualDegree      Boolean  @default(false)
+  universityId    String
+  university      University @relation(fields: [universityId], references: [id])
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+enum DegreeLevel {
+  DBA
+  MBA
+  MCA
+  MCOM
+  MED
+  BBA
+  BCA
+  BCOM
+}
+
+enum SubjectArea {
+  GENERAL_MANAGEMENT
+  FINANCE_BANKING
+  MARKETING_STRATEGY
+  HEALTHCARE_MANAGEMENT
+  TECHNOLOGY_INNOVATION
+  HUMAN_RESOURCES
+}
+
+enum ProgramMode {
+  ONLINE
+  HYBRID
+  ON_CAMPUS
+}
+
+model Blog {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  excerpt     String?
+  content     String   @db.LongText
+  coverImage  String?
+  category    String?
+  region      String?   // e.g. GCC, Global
+  published   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
