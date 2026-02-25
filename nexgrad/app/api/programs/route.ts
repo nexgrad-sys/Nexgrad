@@ -14,7 +14,7 @@ export async function GET(request: Request) {
   const dualDegree = searchParams.get("dualDegree");
   const sort = searchParams.get("sort") || "newest";
   const page = parseInt(searchParams.get("page") || "1");
-  const limit = 10;
+  const limit = 40;
 
   try {
     const where: any = {};

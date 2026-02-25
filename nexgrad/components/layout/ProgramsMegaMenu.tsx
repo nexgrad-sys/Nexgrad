@@ -12,6 +12,8 @@ export default function ProgramsMegaMenu() {
       .then(data => setPrograms(data.data || []));
   }, []);
 
+  console.log(programs)
+
   const grouped = programs.reduce((acc: any, program: any) => {
     if (!acc[program.degreeLevel]) {
       acc[program.degreeLevel] = [];

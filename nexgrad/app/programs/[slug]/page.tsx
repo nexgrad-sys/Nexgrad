@@ -68,12 +68,12 @@ export default async function ProgramDetails({ params }: PageProps) {
             <FAQ program={program} />
           </section>
 
-          <CTA program={program} />
+          <CTA />
 
         </div>
 
         <div className="col-span-4">
-          <Sidebar program={program} />
+          <Sidebar  />
         </div>
 
       </div>
