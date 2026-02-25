@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProgramSearchCard from "./ProgramSearchCard";
 import { FiAward, FiArrowRight } from "react-icons/fi";
 
@@ -29,13 +30,17 @@ export default function HeroSection() {
 
           {/* Buttons */}
           <div className="flex gap-4 mt-8">
+            <Link href="/apply">
             <button className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg flex items-center gap-2">
               Start Your Journey <FiArrowRight />
             </button>
+            </Link>
 
-            <button className="border border-gray-400 px-6 py-3 rounded-lg">
+            <Link href="/programs" >
+            <button className="border border-gray-400 px-6 py-3 rounded-lg" >
               Explore Programs
             </button>
+            </Link>
           </div>
         </div>
 
