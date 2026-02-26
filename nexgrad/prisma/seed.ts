@@ -128,22 +128,40 @@ async function main() {
   }
 
 
-  await prisma.fAQ.createMany({
-  data: [
-    {
-      question: "What are the admission requirements?",
-      answer:
-        "Applicants must hold a recognized undergraduate degree and have relevant professional experience.",
-      programId: mbaProgram.id,
+for (const programData of programs) {
+  const createdProgram = await prisma.program.create({
+    data: {
+      title: programData.title,
+      slug: slugify(programData.title),
+      description: `Professional ${programData.title} program.`,
+      durationMonths: 24,
+      tuition: 15000,
+      currency: "USD",
+      degreeLevel: programData.degreeLevel as any,
+      mode: "ONLINE",
+      subjectArea: "GENERAL_MANAGEMENT",
+      universityId: university.id,
     },
-    {
-      question: "Can I study while working full-time?",
-      answer:
-        "Yes. Our programs are designed for working professionals with flexible online learning.",
-      programId: mbaProgram.id,
-    },
-  ],
-});
+  });
+
+  // Add default FAQs for each program
+ await prisma.fAQ.createMany({
+    data: [
+      {
+        question: "What are the admission requirements?",
+        answer:
+          "Applicants must hold a recognized undergraduate degree.",
+        programId: createdProgram.id,
+      },
+      {
+        question: "Can I study while working full-time?",
+        answer:
+          "Yes. The program is designed for working professionals.",
+        programId: createdProgram.id,
+      },
+    ],
+  });
+}
 
   console.log("✅ ALL COURSES SEEDED SUCCESSFULLY 🚀");
 }
