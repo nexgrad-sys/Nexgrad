@@ -1,4 +1,4 @@
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
 import ProgramHero from "./components/ProgramHero";

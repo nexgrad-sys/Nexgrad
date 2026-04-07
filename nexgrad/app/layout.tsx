@@ -1,19 +1,28 @@
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import "./globals.css";
+"use client"
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import "./globals.css"
+import Header from "@/app/components/layout/Header"
+import Footer from "@/app/components/layout/Footer"
+import { usePathname } from "next/navigation"
+
+export default function RootLayout({ children }: any) {
+  const pathname = usePathname()
+
+  const isAdmin = pathname.startsWith("/admin")
+
   return (
     <html lang="en">
-      <body >
-        <Header />
+      <body>
+
+        {/* ✅ HIDE HEADER */}
+        {!isAdmin && <Header />}
+
         {children}
-        <Footer />
+
+        {/* ✅ HIDE FOOTER */}
+        {!isAdmin && <Footer />}
+
       </body>
     </html>
-  );
+  )
 }

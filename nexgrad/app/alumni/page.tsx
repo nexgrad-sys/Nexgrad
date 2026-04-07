@@ -1,4 +1,4 @@
-import AlumniLogin from "@/components/alumni/AlumniLogin";
+import AlumniLogin from "@/app/components/alumni/AlumniLogin";
 
 export default function AlumniPage() {
   return (

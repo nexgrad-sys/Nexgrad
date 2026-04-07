@@ -1,4 +1,4 @@
-import ProgramsPage from "@/components/programs/ProgramsPage";
+import ProgramsPage from "@/app/components/programs/ProgramsPage";
 
 export const dynamic = "force-dynamic";
 

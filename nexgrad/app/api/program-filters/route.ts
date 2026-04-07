@@ -1,4 +1,4 @@
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -9,13 +9,9 @@ export async function GET() {
     },
   });
 
-  const degreeLevels = [
-    ...new Set(programs.map((p) => p.degreeLevel)),
-  ];
+  const degreeLevels = [...new Set(programs.map((p) => p.degreeLevel))];
 
-  const subjectAreas = [
-    ...new Set(programs.map((p) => p.subjectArea)),
-  ];
+  const subjectAreas = [...new Set(programs.map((p) => p.subjectArea))];
 
   return NextResponse.json({
     degreeLevels,

@@ -60,6 +60,21 @@ model Program {
   updatedAt       DateTime @updatedAt
 }
 
+model Category {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model Badge {
+  id        String   @id @default(cuid())
+  name      String
+  color     String
+  createdAt DateTime @default(now())
+}
+
 model FAQ {
   id        String   @id @default(uuid())
   question  String
