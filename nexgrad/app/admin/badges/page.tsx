@@ -4,16 +4,30 @@ import { useEffect, useState } from "react";
 import AdminTable from "@/app/components/admin/DataTable";
 import BadgeModal from "@/app/components/modals/BadgeModal";
 
-export default function BadgesPage() {
-  const [data, setData] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [editItem, setEditItem] = useState(null);
+type Badge = {
+  id: string; // ✅ now required
+  _id: string;
+  name: string;
+  description?: string;
+  color: string;
+};
 
-  const fetchData = async () => {
-    const res = await fetch("/api/badges");
-    const json = await res.json();
-    setData(json);
-  };
+export default function BadgesPage() {
+  const [data, setData] = useState<Badge[]>([]);
+  const [open, setOpen] = useState(false);
+  const [editItem, setEditItem] = useState<Badge | null>(null);
+
+ const fetchData = async () => {
+  const res = await fetch("/api/badges");
+  const json = await res.json();
+
+  const formatted = json.map((item: any) => ({
+    ...item,
+    id: item._id, // ✅ map here
+  }));
+
+  setData(formatted);
+};
 
   useEffect(() => {
     fetchData();
@@ -41,7 +55,7 @@ export default function BadgesPage() {
 
       <AdminTable
         data={data}
-        onEdit={(item) => {
+        onEdit={(item: Badge) => {
           setEditItem(item);
           setOpen(true);
         }}

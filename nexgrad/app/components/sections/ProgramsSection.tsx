@@ -1,22 +1,24 @@
 import { prisma } from "@/lib/prisma";
 import ProgramCard from "@/app/components/ui/ProgramCard";
 import Link from "next/link";
+import { Prisma } from "@prisma/client";
 
 export default async function ProgramsSection() {
-  const programs = await prisma.program.findMany({
+  const programs: Prisma.ProgramGetPayload<{
+    include: { university: true };
+  }>[] = await prisma.program.findMany({
     include: {
       university: true,
     },
     orderBy: {
       createdAt: "desc",
     },
-    take: 6, // show latest 6 programs
+    take: 6,
   });
 
   return (
     <section className="w-full py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        {/* Heading */}
         <h2 className="text-4xl font-bold mb-3">Discover Your Next Degree</h2>
 
         <p className="text-gray-500 mb-12 text-lg">
@@ -24,7 +26,6 @@ export default async function ProgramsSection() {
           professionals
         </p>
 
-        {/* Cards */}
         <div className="grid lg:grid-cols-3 gap-10 mt-6 text-left">
           {programs.map((program) => (
             <ProgramCard
@@ -40,7 +41,6 @@ export default async function ProgramsSection() {
           ))}
         </div>
 
-        {/* View All */}
         <div className="mt-16">
           <Link
             href="/programs"

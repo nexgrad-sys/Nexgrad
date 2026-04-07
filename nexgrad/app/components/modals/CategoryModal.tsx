@@ -2,8 +2,26 @@
 
 import { useState, useEffect } from "react";
 
-export default function CategoryModal({ data, onClose, refresh }) {
-  const [form, setForm] = useState({
+type Category = {
+  id: string;
+  title: string;
+  slug: string;
+  description?: string;
+};
+
+type CategoryModalProps = {
+  data: Category | null;
+  onClose: () => void;
+  refresh: () => void;
+};
+
+export default function CategoryModal({
+  data,
+  onClose,
+  refresh,
+}: CategoryModalProps) {
+  const [form, setForm] = useState<Category>({
+    id: "",
     title: "",
     slug: "",
     description: "",

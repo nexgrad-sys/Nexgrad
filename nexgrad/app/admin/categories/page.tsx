@@ -4,10 +4,19 @@ import { useEffect, useState } from "react";
 import AdminTable from "@/app/components/admin/DataTable";
 import CategoryModal from "@/app/components/modals/CategoryModal";
 
+// /types/category.ts
+export type Category = {
+  id: string;
+  title: string;
+  slug: string;
+  description?: string;
+};
+
 export default function CategoriesPage() {
-  const [data, setData] = useState([]);
+  //const [data, setData] = useState([]);
   const [open, setOpen] = useState(false);
-  const [editItem, setEditItem] = useState(null);
+ const [data, setData] = useState<Category[]>([]);
+const [editItem, setEditItem] = useState<Category | null>(null);
 
  const fetchData = async () => {
   const res = await fetch("/api/categories");
@@ -49,14 +58,14 @@ export default function CategoriesPage() {
         </button>
       </div>
 
-      <AdminTable
-        data={data}
-        onEdit={(item) => {
-          setEditItem(item);
-          setOpen(true);
-        }}
-        onDelete={handleDelete}
-      />
+     <AdminTable
+  data={data}
+  onEdit={(item: Category) => {
+    setEditItem(item);
+    setOpen(true);
+  }}
+  onDelete={handleDelete}
+/>
 
       {open && (
         <CategoryModal

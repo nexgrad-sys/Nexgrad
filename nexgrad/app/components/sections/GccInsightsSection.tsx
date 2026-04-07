@@ -1,9 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Image from "next/image";
+import { Prisma } from "@prisma/client";
 
 export default async function GccInsightsSection() {
-  const posts = await prisma.blog.findMany({
+  const posts: Prisma.BlogGetPayload<{}>[] = await prisma.blog.findMany({
     where: {
       region: "GCC",
       published: true,
@@ -19,7 +20,6 @@ export default async function GccInsightsSection() {
   return (
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
         <div className="mb-14 text-center">
           <h2 className="text-4xl font-bold mb-3">
             Career Insights for Professionals in the GCC
@@ -31,7 +31,6 @@ export default async function GccInsightsSection() {
           </p>
         </div>
 
-        {/* Articles */}
         <div className="grid md:grid-cols-3 gap-10">
           {posts.map((post) => (
             <Link
@@ -65,7 +64,6 @@ export default async function GccInsightsSection() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="text-center mt-16">
           <Link
             href="/blogs?region=GCC"

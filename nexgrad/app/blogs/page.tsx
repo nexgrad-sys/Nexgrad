@@ -1,9 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Image from "next/image";
+import { Prisma } from "@prisma/client";
 
 export default async function BlogsPage() {
-  const blogs = await prisma.blog.findMany({
+  const blogs: Prisma.BlogGetPayload<{}>[] = await prisma.blog.findMany({
     where: { published: true },
     orderBy: { createdAt: "desc" },
   });
@@ -11,7 +12,6 @@ export default async function BlogsPage() {
   return (
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-
         <h1 className="text-4xl font-bold mb-12 text-center">
           NexGrad Insights
         </h1>
@@ -44,7 +44,6 @@ export default async function BlogsPage() {
             </Link>
           ))}
         </div>
-
       </div>
     </section>
   );
