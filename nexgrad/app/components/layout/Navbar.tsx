@@ -63,7 +63,7 @@ export default function Navbar() {
               <div className="absolute left-1/2 -translate-x-1/2 top-full mt-6 bg-white shadow-2xl rounded-2xl p-6 w-[280px] animate-fadeIn">
                 <div className="flex flex-col space-y-3 text-sm text-gray-700">
                   <Link
-                    href="/why-nexgrad"
+                    href="/why-choose-us"
                     className="block hover:text-red-600 transition"
                   >
                     Why NexGrad
