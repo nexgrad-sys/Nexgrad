@@ -1,45 +1,59 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
+  const menu = [
+    { name: "Dashboard", path: "/admin/dashboard" },
+    { name: "Programs", path: "/admin/programs" },
+    { name: "Blogs", path: "/admin/blogs" },
+    { name: "Banners", path: "/admin/banners" },
+    { name: "Pages", path: "/admin/pages" },
+    { name: "Admissions", path: "/admin/admissions" },
+    { name: "Badges", path: "/admin/badges" },
+    { name: "Categories", path: "/admin/categories" },
+    { name: "Page Builder", path: "/admin/builder" },
+    { name: "FAQ's", path: "/admin/faqs" },
+    { name: "Testimonials", path: "/admin/testimonials" },
+  ];
+
   return (
     <div className="w-[240px] bg-black text-white flex flex-col">
 
-      <div className="p-6 text-xl font-bold border-b border-gray-800 flex gap-2 ">
-       <div className="w-9 h-9 bg-red-600 text-white flex items-center justify-center font-bold rounded">
-            N
-          </div>
-          <span className="text-xl font-semibold mt-1">NexGrad</span>
+      {/* LOGO */}
+      <div className="p-6 text-xl font-bold border-b border-gray-800 flex gap-2">
+        <div className="w-9 h-9 bg-red-600 flex items-center justify-center font-bold rounded">
+          N
+        </div>
+        <span className="text-xl font-semibold mt-1">NexGrad</span>
       </div>
 
+      {/* MENU */}
       <nav className="flex flex-col p-4 space-y-2 text-sm">
 
-        <Link href="/admin/dashboard" className="px-3 py-2 rounded hover:bg-gray-800">
-          Dashboard
-        </Link>
+        {menu.map((item) => {
+          const isActive = pathname === item.path;
 
-        <Link href="/admin/programs" className="px-3 py-2 rounded hover:bg-gray-800">
-          Programs
-        </Link>
-
-        <Link href="/admin/blogs" className="px-3 py-2 rounded hover:bg-gray-800">
-          Blogs
-        </Link>
-
-        <Link href="/admin/admissions" className="px-3 py-2 rounded hover:bg-gray-800">
-          Admissions
-        </Link>
-
-         <Link href="/admin/badges" className="px-3 py-2 rounded hover:bg-gray-800">
-          Badges
-        </Link>
-
-         <Link href="/admin/categories" className="px-3 py-2 rounded hover:bg-gray-800">
-          Categories
-        </Link>
+          return (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={`px-3 py-2 rounded transition 
+                ${isActive 
+                  ? "bg-red-600 text-white" 
+                  : "hover:bg-gray-800 text-gray-300"
+                }
+              `}
+            >
+              {item.name}
+            </Link>
+          );
+        })}
 
       </nav>
     </div>
-  )
+  );
 }
