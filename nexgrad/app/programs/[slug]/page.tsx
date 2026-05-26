@@ -405,7 +405,7 @@ export default async function ProgramPage({
             {/* CTA */}
 
             <CTA
-              program={program}
+              
             />
 
           </div>
