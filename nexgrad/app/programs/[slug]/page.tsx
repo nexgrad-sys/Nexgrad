@@ -417,7 +417,7 @@ export default async function ProgramPage({
             <div className="sticky top-24 space-y-4">
 
               <Sidebar
-                program={program}
+                // program={program}
               />
 
             </div>
