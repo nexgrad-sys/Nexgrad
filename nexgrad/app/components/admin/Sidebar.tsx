@@ -25,11 +25,8 @@ export default function Sidebar() {
     <div className="w-[240px] bg-black text-white flex flex-col">
 
       {/* LOGO */}
-      <div className="p-6 text-xl font-bold border-b border-gray-800 flex gap-2">
-        <div className="w-9 h-9 bg-red-600 flex items-center justify-center font-bold rounded">
-          N
-        </div>
-        <span className="text-xl font-semibold mt-1">NexGrad</span>
+      <div className="p-6 text-xl font-bold border-b border-gray-800 flex gap-2 bg-light">
+       <img src="/logo.jpeg" style={{height:'100px'}} />
       </div>
 
       {/* MENU */}

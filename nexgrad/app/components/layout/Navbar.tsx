@@ -33,10 +33,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-red-600 text-white flex items-center justify-center font-bold rounded">
-            N
-          </div>
-          <span className="text-xl font-semibold">NexGrad</span>
+          <img src="/logo.jpeg" style={{height:'100px'}} />
         </Link>
 
         {/* Main Menu */}
