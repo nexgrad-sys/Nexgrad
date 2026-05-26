@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1779777705521",
+    "title": "BCOM",
+    "slug": "bcom",
+    "degreeLevel": "Bachelor's",
+    "tuition": "1500",
+    "duration": "4 years",
+    "description": "",
+    "universities": [
+      {
+        "id": "1779260608000",
+        "name": "Test Uni"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-05-26T06:41:45.521Z"
+  }
+]

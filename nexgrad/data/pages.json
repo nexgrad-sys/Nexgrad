@@ -1,0 +1,93 @@
+[
+  {
+    "id": "03237f73-cbed-45ba-8f0e-3146c2345510",
+    "title": "Test",
+    "slug": "test",
+    "status": "published",
+    "sections": [
+      {
+        "id": "c71d1fee-6140-4856-989b-ef9b0ddccecb",
+        "type": "hero",
+        "data": {
+          "title": "Nexgrad",
+          "subtitle": "Add subtitle text",
+          "description": "Eduction provides Here",
+          "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+          "buttonText": "Apply Now",
+          "buttonLink": "/apply"
+        }
+      },
+      {
+        "id": "154201f6-36d5-4157-8f13-bdd386099c13",
+        "type": "cta",
+        "data": {
+          "heading": "Ready To Apply?",
+          "description": "Start your journey today with Nexgrad",
+          "buttonText": "Apply Now",
+          "buttonLink": "/apply"
+        }
+      },
+      {
+        "id": "327fa512-2e0a-4dff-b474-d0958ac64ce5",
+        "type": "features",
+        "data": {
+          "heading": "Features",
+          "items": [
+            {
+              "title": "Feature One",
+              "description": "Feature description"
+            },
+            {
+              "title": "Feature Two",
+              "description": "Feature description"
+            }
+          ]
+        }
+      },
+      {
+        "id": "6085e566-0eb0-4f8c-9a17-0e4e36f30c24",
+        "type": "faq",
+        "data": {
+          "heading": "FAQs",
+          "items": [
+            {
+              "question": "What is this?",
+              "answer": "This is answer text."
+            }
+          ]
+        }
+      },
+      {
+        "id": "8913d7e8-6342-411c-8b99-9e71dc6e2625",
+        "type": "testimonials",
+        "data": {
+          "heading": "Student Testimonials",
+          "items": [
+            {
+              "name": "John Doe",
+              "quote": "Amazing experience with Nexgrad!",
+              "role": "MBA Student"
+            }
+          ]
+        }
+      },
+      {
+        "id": "023efaed-5e30-407b-89cd-d42741964006",
+        "type": "features",
+        "data": {
+          "heading": "Features",
+          "items": [
+            {
+              "title": "Feature One",
+              "description": "Feature description"
+            },
+            {
+              "title": "Feature Two",
+              "description": "Feature description"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

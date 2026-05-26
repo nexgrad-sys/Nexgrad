@@ -58,7 +58,7 @@ export default function ProgramHero({ program }: any) {
           {/* STATS */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
 
-            <Stat icon={<FiClock />} value={program.durationMonths} label="Months" />
+            <Stat icon={<FiClock />} value={program.duration}  />
 
             <Stat icon={<FiMapPin />} value={formatEnum(program.mode)} label="Mode" />
 

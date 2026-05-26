@@ -1,75 +1,130 @@
 import { NextResponse } from "next/server";
-import { prisma } from "../../../lib/prisma";
+import fs from "fs";
+import path from "path";
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+const filePath = path.join(
+  process.cwd(),
+  "data",
+  "programs.json"
+);
 
-  const search = searchParams.get("search");
-  const degree = searchParams.get("degree");
-  const subject = searchParams.get("subject");
-  const university = searchParams.get("university");
-  const region = searchParams.get("region");
-  const trending = searchParams.get("trending");
-  const newLaunch = searchParams.get("newLaunch");
-  const dualDegree = searchParams.get("dualDegree");
-  const sort = searchParams.get("sort") || "newest";
-  const page = parseInt(searchParams.get("page") || "1");
-  const limit = 40;
+/* ---------------- ENSURE FILE ---------------- */
 
+function ensureFile() {
+  const dir = path.dirname(filePath);
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, "[]");
+  }
+}
+
+/* ---------------- READ ---------------- */
+
+function readData() {
+  ensureFile();
+
+  return JSON.parse(
+    fs.readFileSync(filePath, "utf-8") || "[]"
+  );
+}
+
+/* ---------------- WRITE ---------------- */
+
+function writeData(data: any) {
+  fs.writeFileSync(
+    filePath,
+    JSON.stringify(data, null, 2)
+  );
+}
+
+/* ---------------- GET ---------------- */
+
+export async function GET() {
   try {
-    const where: any = {};
-
-    if (search) {
-    where.OR = [
-  { title: { contains: search } },
-  {
-    university: {
-      is: {
-        name: { contains: search },
-      },
-    },
-  },
-];
-    }
-
-    if (degree) where.degreeLevel = degree;
-    if (subject) where.subjectArea = subject;
-    if (university) where.universityId = university;
-
-    if (region) {
-      where.university = {
-        is: { region },
-      };
-    }
-
-    if (trending === "true") where.trending = true;
-    if (newLaunch === "true") where.newLaunch = true;
-    if (dualDegree === "true") where.dualDegree = true;
-
-    let orderBy: any = { createdAt: "desc" };
-    if (sort === "tuition") orderBy = { tuition: "asc" };
-
-    const programs = await prisma.program.findMany({
-      where,
-      include: { university: true },
-      orderBy,
-      skip: (page - 1) * limit,
-      take: limit,
+    return NextResponse.json({
+      success: true,
+      data: readData(),
     });
+  } catch (err) {
+    return NextResponse.json(
+      { success: false },
+      { status: 500 }
+    );
+  }
+}
 
-    const total = await prisma.program.count({ where });
+/* ---------------- POST ---------------- */
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+
+    const programs = readData();
+
+    const newProgram = {
+      id: Date.now().toString(),
+
+      title: body.title || "",
+
+      slug: body.slug || "",
+
+      degreeLevel: body.degreeLevel || "",
+
+      tuition: body.tuition || "",
+
+      duration: body.duration || "",
+
+      description: body.description || "",
+
+      universities: body.universities || [],
+
+      status: body.status || "active",
+
+      createdAt: new Date().toISOString(),
+    };
+
+    programs.push(newProgram);
+
+    writeData(programs);
 
     return NextResponse.json({
-      data: programs,
-      total,
-      page,
-      totalPages: Math.ceil(total / limit),
+      success: true,
+      data: newProgram,
     });
+  } catch (err) {
+    console.error(err);
 
-  } catch (error) {
-    console.error("PROGRAM API ERROR:", error);
     return NextResponse.json(
-      { error: "Failed to fetch programs" },
+      { success: false },
+      { status: 500 }
+    );
+  }
+}
+
+/* ---------------- DELETE ---------------- */
+
+export async function DELETE(req: Request) {
+  try {
+    const body = await req.json();
+
+    let programs = readData();
+
+    programs = programs.filter(
+      (p: any) => p.id !== body.id
+    );
+
+    writeData(programs);
+
+    return NextResponse.json({
+      success: true,
+    });
+  } catch (err) {
+    return NextResponse.json(
+      { success: false },
       { status: 500 }
     );
   }

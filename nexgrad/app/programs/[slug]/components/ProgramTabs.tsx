@@ -1,68 +1,93 @@
+/* app/programs/[slug]/components/ProgramTabs.tsx */
+
 "use client";
 
-import { useEffect, useState } from "react";
-
-export default function ProgramTabs({ program }: any) {
-  const [active, setActive] = useState("overview");
+export default function ProgramTabs({
+  program,
+}: {
+  program?: any;
+}) {
 
   const tabs = [
-    { id: "overview", label: "Overview", show: true },
-    { id: "curriculum", label: "Curriculum", show: !!program.curriculum },
-    { id: "fees", label: "Fees & EMI", show: true },
-  ].filter(tab => tab.show);
+    {
+      id: "overview",
+      label: "Overview",
+      show: true,
+    },
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
+    {
+      id: "curriculum",
+      label: "Curriculum",
+      show:
+        program?.curriculum &&
+        program?.curriculum?.length > 0,
+    },
 
-    const offset = 120;
-    const y =
-      el.getBoundingClientRect().top + window.scrollY - offset;
+    {
+      id: "fees",
+      label: "Fees & EMI",
+      show: true,
+    },
 
-    window.scrollTo({ top: y, behavior: "smooth" });
-  };
+    {
+      id: "faculty",
+      label: "Faculty",
+      show:
+        program?.faculty &&
+        program?.faculty?.length > 0,
+    },
 
-  useEffect(() => {
-    const handleScroll = () => {
-      tabs.forEach(tab => {
-        const el = document.getElementById(tab.id);
-        if (!el) return;
+    {
+      id: "careers",
+      label: "Careers",
+      show:
+        program?.careers &&
+        program?.careers?.length > 0,
+    },
 
-        const top = el.offsetTop - 140;
-        if (window.scrollY >= top) {
-          setActive(tab.id);
-        }
-      });
-    };
+    {
+      id: "faq",
+      label: "FAQ",
+      show:
+        program?.faq &&
+        program?.faq?.length > 0,
+    },
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    {
+      id: "apply",
+      label: "Apply",
+      show: true,
+    },
+  ].filter((tab) => tab.show);
 
   return (
-    <div className="sticky top-[80px] z-30 bg-white border-b shadow-sm">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex gap-6 py-4">
+    <div className="sticky top-0 z-40 bg-white border-b">
 
-          {tabs.map(tab => (
-            <button
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+
+        <div className="flex gap-8 overflow-x-auto no-scrollbar py-5">
+
+          {tabs.map((tab) => (
+            <a
               key={tab.id}
-              onClick={() => scrollToSection(tab.id)}
-              className={`
-                pb-2 border-b-2 text-sm font-medium transition
-                ${
-                  active === tab.id
-                    ? "border-primary text-primary"
-                    : "border-transparent text-gray-600 hover:text-primary"
-                }
-              `}
+              href={`#${tab.id}`}
+              className="
+                whitespace-nowrap
+                text-[16px]
+                font-medium
+                text-gray-600
+                hover:text-red-600
+                transition
+              "
             >
               {tab.label}
-            </button>
+            </a>
           ))}
 
         </div>
+
       </div>
+
     </div>
   );
 }
