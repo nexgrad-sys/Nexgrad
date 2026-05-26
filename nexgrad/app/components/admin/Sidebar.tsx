@@ -12,6 +12,7 @@ export default function Sidebar() {
     { name: "Blogs", path: "/admin/blogs" },
     { name: "Banners", path: "/admin/banners" },
     { name: "Pages", path: "/admin/pages" },
+    { name: "Universities", path: "/admin/universities" },
     { name: "Admissions", path: "/admin/admissions" },
     { name: "Badges", path: "/admin/badges" },
     { name: "Categories", path: "/admin/categories" },
