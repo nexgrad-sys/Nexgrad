@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <AboutSection />
+      {/* <AboutSection /> */}
       <IntakeHighlights />
       <ProgramsSection />
       <GccInsightsSection />

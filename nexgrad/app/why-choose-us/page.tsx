@@ -9,765 +9,385 @@ import {
   Briefcase,
   BookOpen,
   Brain,
-  Lightbulb,
-  TrendingUp,
-  Network,
-  Building2,
   CheckCircle,
   Shield,
-  Trophy,
   GraduationCap,
+  Clock,
+  Compass,
+  FileText,
+  MessageCircle,
+  HelpCircle,
+  Map,
+  Building2,
+  Laptop
 } from "lucide-react";
 
 export default function Page() {
-  const features = [
+  const steps = [
     {
-      title: "Personalized Guidance",
-      icon: Users,
-      description:
-        "Dedicated enrollment advisors who understand your unique career goals and guide you to the perfect program match.",
+      title: "Discover Your Goals",
+      desc: "We begin by understanding your academic background, work experience, and long-term career objectives.",
     },
     {
-      title: "Global Network",
-      icon: Globe,
-      description:
-        "50+ partner universities across Europe, Americas, Asia, and the Middle East, all internationally accredited.",
+      title: "Compare Universities & Programmes",
+      desc: "Receive personalised recommendations based on recognition, curriculum, flexibility, budget, and career outcomes.",
     },
     {
-      title: "Career-Focused",
-      icon: Target,
-      description:
-        "Programs designed for working professionals with practical skills that deliver immediate career impact.",
+      title: "Make an Informed Decision",
+      desc: "Understand the strengths of each university before selecting the programme that best matches your aspirations.",
     },
     {
-      title: "Quality Assurance",
-      icon: Award,
-      description:
-        "All programs are AACSB, EQUIS, or AMBA accredited, ensuring global recognition and employability.",
+      title: "Complete Your Admission",
+      desc: "Our advisors assist with eligibility checks, documentation, application submission, and admission formalities.",
     },
     {
-      title: "Lifetime Support",
-      icon: Briefcase,
-      description:
-        "Continuous career services, alumni networking, and professional development resources long after graduation.",
-    },
-    {
-      title: "Flexible Learning",
-      icon: BookOpen,
-      description:
-        "Online, hybrid, and on-campus options that fit your schedule without compromising on academic rigor.",
+      title: "Begin Your Learning Journey",
+      desc: "Start studying with confidence while continuing to receive guidance whenever required.",
     },
   ];
 
+  const features = [
+    {
+      title: "Personalised Education Guidance",
+      icon: Users,
+      description: "Every learner has a different academic background, career stage, and future ambition. Our advisors take time to understand your goals before recommending suitable universities and programmes.",
+    },
+    {
+      title: "Recognised University Partners",
+      icon: Award,
+      description: "We work with carefully selected universities and awarding organisations known for academic quality, recognised qualifications, and flexible learning designed for modern professionals.",
+    },
+    {
+      title: "Transparent & Honest Advice",
+      icon: Shield,
+      description: "Our role is to help you make an informed decision. We clearly explain programme structure, eligibility, recognition, learning format, duration, and career opportunities.",
+    },
+    {
+      title: "Flexible Learning Options",
+      icon: Clock,
+      description: "Whether you are a full-time employee, entrepreneur, business owner, or busy professional, we help you identify programmes that fit around your work and personal commitments.",
+    },
+    {
+      title: "End-to-End Admission Support",
+      icon: FileText,
+      description: "From your first enquiry until your admission is confirmed, our team supports you with programme selection, documentation, application submission, and university communication.",
+    },
+    {
+      title: "Long-Term Learning Partner",
+      icon: Compass,
+      description: "Our relationship does not end after admission. We continue supporting students by helping them navigate their academic journey and make informed decisions about future qualifications.",
+    },
+  ];
+
+  const promises = [
+    "We recommend programmes based on your career aspirations, not popularity.",
+    "We explain university recognition, accreditation, and programme structure in clear, practical language.",
+    "We encourage you to compare options before making a final decision.",
+    "We remain transparent about admission requirements, timelines, fees, and learning expectations.",
+    "We respect your career goals, budget, learning preferences, and personal commitments.",
+    "We aim to build long-term relationships by helping learners make confident education decisions.",
+  ];
+
+  const partners = [
+    { name: "City University Malaysia", desc: "Recognised for academic excellence and global partnerships." },
+    { name: "Shoolini University", desc: "India's leading research-focused university." },
+    { name: "Amity University Online", desc: "Pioneering digital education with global accreditations." },
+    { name: "OTHM UK", desc: "UK-regulated awarding organisation offering flexible pathways." },
+  ];
+
+  const programs = [
+    { title: "Master of Business Administration (MBA)", desc: "Build leadership, strategic thinking, and business management skills that prepare you for senior roles across industries." },
+    { title: "Executive MBA", desc: "Designed for experienced professionals and managers looking to strengthen leadership capabilities while continuing to work." },
+    { title: "Bachelor of Business Administration (BBA)", desc: "Develop a strong foundation in business, entrepreneurship, marketing, finance, and management." },
+    { title: "Bachelor of Computer Applications (BCA)", desc: "Prepare for careers in software development, programming, databases, cloud computing, and digital technologies." },
+    { title: "Bachelor of Commerce (B.Com)", desc: "Build expertise in accounting, taxation, finance, economics, and business operations." },
+    { title: "Master of Computer Applications (MCA)", desc: "Advance your technical knowledge in software engineering, cloud technologies, artificial intelligence, and enterprise applications." },
+    { title: "Master of Education (M.Ed)", desc: "Strengthen your expertise in educational leadership, curriculum development, research, and modern teaching practices." },
+  ];
+
+  const faqs = [
+    { q: "What is NexGrad?", a: "NexGrad is a higher education guidance platform that helps students and working professionals explore recognised universities, compare programmes, understand admission requirements, and make informed decisions about their education. We partner with recognised universities and awarding organisations to simplify the admission journey." },
+    { q: "Why should I apply through NexGrad instead of applying directly?", a: "Applying through NexGrad gives you access to personalised guidance throughout the decision-making process. We help you compare universities, understand programme differences, evaluate eligibility, review documentation, and complete your admission with dedicated support." },
+    { q: "Does NexGrad charge for counselling?", a: "Please contact our admissions team to understand the counselling process and whether any services are chargeable. We will explain everything clearly before you proceed." },
+    { q: "Can I compare multiple universities before deciding?", a: "Yes. In fact, we encourage it. Every university has different strengths, recognition, learning models, tuition fees, and programme structures. Our advisors help you compare your options objectively so you can choose the university that best fits your goals." },
+    { q: "Does NexGrad offer only online programmes?", a: "Our portfolio primarily focuses on flexible learning programmes designed for working professionals. Programme availability depends on the university and may vary over time." },
+    { q: "Will my degree be awarded by NexGrad?", a: "No. Your qualification is awarded directly by the university or awarding organisation where you enrol. NexGrad provides education guidance, admission support, and student assistance throughout your journey." },
+    { q: "Can international students apply through NexGrad?", a: "Yes. Many of our partner universities welcome international students. Eligibility requirements may vary depending on the university and programme. Our advisors will guide you through the admission requirements." },
+    { q: "Will someone help me choose the right programme?", a: "Yes. Our advisors take time to understand your educational background, work experience, and career aspirations before recommending suitable universities and programmes." },
+    { q: "Can I speak with an advisor before applying?", a: "Absolutely. We encourage prospective students to speak with an advisor before making any decision. This allows you to compare programmes, understand eligibility, and clarify any questions you may have." },
+    { q: "Does NexGrad help with documentation?", a: "Yes. We guide students through the documentation process, eligibility verification, application submission, and admission formalities to help make the experience as smooth as possible." },
+    { q: "What happens after I submit an enquiry?", a: "One of our education advisors will contact you to understand your goals, discuss suitable options, explain the admission process, and answer any questions before you decide to apply." },
+    { q: "How do I get started?", a: "Simply submit an enquiry, schedule a consultation, or speak with one of our advisors. We will help you explore your options and guide you through every step of your higher education journey." },
+  ];
+
   return (
-    <div className="bg-[#f7f7f7] text-gray-800">
+    <div className="bg-[#f7f7f7] text-gray-800 font-sans">
+      
       {/* HERO */}
       <section className="text-center py-20 px-6 bg-white">
-        <h1 className="text-5xl font-bold">
-          Why Choose <span className="text-red-600">NexGrad</span>
-        </h1>
-        <p className="mt-6 text-gray-500 max-w-3xl mx-auto text-lg">
-          We're not just a platform—we're your partner in educational
-          excellence.
+        <h1 className="text-sm font-bold tracking-widest text-red-600 uppercase mb-4">Why Choose NexGrad</h1>
+        <h2 className="text-4xl md:text-5xl font-bold max-w-4xl mx-auto leading-tight">
+          Your Education Journey Deserves More Than Just an Admission
+        </h2>
+        <p className="mt-6 text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+          Choosing a university is one of the biggest investments you will make in your future. The right decision can accelerate your career, while the wrong one can cost valuable time, money, and opportunities. With hundreds of universities, multiple accreditation systems, varying tuition fees, and countless programme options available today, making an informed choice has become increasingly challenging.
+          <br /><br />
+          <strong>NexGrad exists to simplify that journey.</strong>
         </p>
+        <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
+          We help working professionals, graduates, and ambitious learners identify recognised universities, compare programmes objectively, understand eligibility requirements, and confidently choose qualifications that align with their career aspirations. From your first enquiry to your final enrolment, our advisors remain with you at every stage.
+        </p>
+        <div className="mt-10 flex justify-center gap-4">
+          <button className="bg-red-600 hover:bg-red-700 transition text-white px-8 py-3 rounded-lg font-medium">
+            Explore Programmes
+          </button>
+          <button className="border border-red-600 text-red-600 hover:bg-red-50 transition px-8 py-3 rounded-lg font-medium">
+            Speak with an Advisor
+          </button>
+        </div>
+      </section>
 
-        {/* Mission Block */}
-        <div className="grid md:grid-cols-2 gap-12 mt-16 max-w-6xl mx-auto items-center">
-          <div className="bg-gray-200 h-[320px] rounded-2xl flex items-center justify-center">
-            <span className="text-gray-400">Image</span>
+      {/* SECTION 1: MORE THAN AN ADMISSION PLATFORM */}
+      <section className="py-20 px-6 bg-[#f7f7f7]">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
+          <div className="bg-white h-[400px] rounded-2xl flex items-center justify-center shadow-sm">
+            <span className="text-gray-400">Image: Consultation / Education Concept</span>
           </div>
-
           <div className="text-left">
-            <span className="inline-block border border-red-500 text-red-600 px-4 py-1 rounded-full text-sm">
-              15+ Years of Excellence
-            </span>
-
-            <h2 className="text-3xl font-semibold mt-4">
-              Your Success is Our Mission
-            </h2>
-
-            <p className="mt-4 text-gray-600">
-              At NexGrad, we believe in the transformative power of education.
-              Our approach goes beyond traditional course catalogs—we act as
-              your intelligent academic advisor, guiding you through every step
-              of your educational journey from inquiry to graduation and beyond.
+            <h2 className="text-3xl font-semibold">More Than an Admission Platform</h2>
+            <p className="mt-4 text-gray-600 leading-relaxed">
+              Many education consultancies focus on completing applications. Our approach begins much earlier. Before recommending a university or programme, we take time to understand your educational background, professional experience, career ambitions, and personal circumstances. Every learner has different goals, and every recommendation should reflect those differences.
             </p>
-
-            <p className="mt-4 text-gray-600">
-              With partnerships across 50+ globally recognized universities and
-              a student community spanning 50+ countries, we've helped over
-              10,000 professionals achieve their career aspirations through
-              world-class higher education.
+            <p className="mt-4 text-gray-600 leading-relaxed">
+              Whether you are looking to earn your first degree, prepare for leadership opportunities, switch careers, or continue learning while working full-time, our objective remains the same: helping you make an informed decision with confidence.
+            </p>
+            <p className="mt-4 text-gray-800 font-medium">
+              We believe higher education is not about choosing the most popular university. It is about choosing the university and programme that best fit your future.
             </p>
           </div>
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section className="py-20 px-6">
-        <h2 className="text-3xl text-center font-semibold">
-          What Sets Us Apart
-        </h2>
-        <p className="text-center text-gray-500 mt-2">
-          Discover the key advantages
+      {/* SECTION 2: HOW NEXGRAD WORKS */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl text-center font-semibold mb-12">How NexGrad Works</h2>
+          <div className="flex flex-col md:flex-row gap-6 relative">
+            {steps.map((step, index) => (
+              <div key={index} className="flex-1 relative bg-[#f7f7f7] p-6 rounded-xl text-center">
+                <div className="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4 relative z-10">
+                  {index + 1}
+                </div>
+                <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
+                <p className="text-gray-500 text-sm">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: WHY PROFESSIONALS CHOOSE NEXGRAD */}
+      <section className="py-20 px-6 bg-[#f7f7f7]">
+        <h2 className="text-3xl text-center font-semibold">Why Professionals Choose NexGrad</h2>
+        <p className="text-center text-gray-500 mt-4 max-w-3xl mx-auto">
+          Higher education is more than selecting a university. It is about choosing a learning path that supports your career, fits your lifestyle, and delivers long-term value. At NexGrad, every recommendation is centred around your goals rather than a one-size-fits-all approach.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
           {features.map((item, i) => {
             const Icon = item.icon;
-
             return (
-              <motion.div
-                key={i}
-                whileHover={{ y: -5 }}
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
-              >
-                {/* ICON */}
+              <motion.div key={i} whileHover={{ y: -5 }} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
                 <div className="w-12 h-12 flex items-center justify-center bg-red-100 rounded-lg mb-4">
                   <Icon className="w-6 h-6 text-red-600" />
                 </div>
-
-                {/* TITLE */}
                 <h3 className="font-semibold text-lg">{item.title}</h3>
-
-                {/* DESC */}
-                <p className="text-gray-500 mt-2 text-sm">{item.description}</p>
+                <p className="text-gray-500 mt-2 text-sm leading-relaxed">{item.description}</p>
               </motion.div>
             );
           })}
         </div>
       </section>
 
-      {/* IMPACT SECTION */}
-      <section className="py-20 px-6 bg-[#f7f7f7]">
-        <h2 className="text-3xl text-center font-semibold">
-          Our Impact in Numbers
-        </h2>
-
-        <p className="text-center text-gray-500 mt-2">
-          Real results that demonstrate our commitment to student success
-        </p>
-
-        <div className="grid md:grid-cols-4 gap-8 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              value: "10,000+",
-              title: "Alumni Network",
-              desc: "Graduates worldwide",
-            },
-            {
-              value: "50+",
-              title: "Partner Universities",
-              desc: "Globally recognized",
-            },
-            {
-              value: "90%",
-              title: "Career Advancement",
-              desc: "Within 1 year of graduation",
-            },
-            {
-              value: "45%",
-              title: "Salary Increase",
-              desc: "Average post-MBA",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition"
-            >
-              <h3 className="text-red-600 text-4xl font-bold">{item.value}</h3>
-
-              <p className="mt-3 font-semibold text-gray-800">{item.title}</p>
-
-              <p className="text-gray-500 text-sm mt-1">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* MILESTONES */}
-      <section className="py-20 bg-white px-6">
-        <h2 className="text-3xl text-center font-semibold">
-          Institutional Milestones
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-          {["2008", "2012", "2015", "2018", "2021", "2024"].map((year, i) => (
-            <div
-              key={i}
-              className="bg-[#f7f7f7] p-8 rounded-2xl border-l-4 border-red-600"
-            >
-              <h3 className="text-red-600 text-xl font-bold">{year}</h3>
-              <p className="mt-2 font-semibold">Milestone Title</p>
-              <p className="text-gray-500 text-sm mt-2">
-                Description of milestone achievement.
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* LEARNING */}
-      <section className="py-20 px-6">
-        <h2 className="text-3xl text-center font-semibold">
-          Learning Methodology
-        </h2>
-
-        <p className="text-center text-gray-500 mt-2">
-          A proven approach that combines theory with real-world application
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-12 mt-12 max-w-6xl mx-auto items-center">
-          {/* IMAGE */}
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-            className="rounded-2xl shadow-md"
-          />
-
-          {/* CONTENT */}
-          <div className="space-y-8">
-            {[
-              {
-                title: "Experiential Learning",
-                desc: "Real-world case studies, simulations, and business projects that mirror actual industry challenges.",
-                icon: Brain,
-              },
-              {
-                title: "Collaborative Approach",
-                desc: "Peer learning, group projects, and networking opportunities with diverse global cohorts.",
-                icon: Users,
-              },
-              {
-                title: "Research-Driven Curriculum",
-                desc: "Latest academic research and industry best practices integrated into every module.",
-                icon: Lightbulb,
-              },
-              {
-                title: "Outcome-Focused",
-                desc: "Skills and competencies aligned with market demands and career advancement goals.",
-                icon: Target,
-              },
-            ].map((item, i) => {
-              const Icon = item.icon;
-
-              return (
-                <div key={i} className="flex gap-4 items-start">
-                  {/* ICON BOX */}
-                  <div className="w-12 h-12 flex items-center justify-center bg-red-50 rounded-xl">
-                    <Icon className="w-6 h-6 text-red-600" />
-                  </div>
-
-                  {/* TEXT */}
-                  <div>
-                    <h4 className="font-semibold text-lg">{item.title}</h4>
-                    <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* RESEARCH */}
-      <section className="py-20 bg-white px-6">
-        <h2 className="text-3xl text-center font-semibold">
-          Research & Innovation
-        </h2>
-
-        <p className="text-center text-gray-500 mt-2">
-          Driving thought leadership and industry innovation
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              title: "Business Innovation",
-              desc: "Cutting-edge research in digital transformation, sustainable business models, and emerging markets.",
-              stat: "50+ Published Papers Annually",
-              icon: TrendingUp,
-            },
-            {
-              title: "Leadership Studies",
-              desc: "Advanced research in organizational behavior, strategic leadership, and change management.",
-              stat: "30+ Research Collaborations",
-              icon: Network,
-            },
-            {
-              title: "Global Economics",
-              desc: "Analysis of international trade, regional economic development, and financial systems.",
-              stat: "15+ Industry Reports",
-              icon: Globe,
-            },
-          ].map((item, i) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={i}
-                className="bg-[#f7f7f7] p-8 rounded-2xl hover:shadow-md transition"
-              >
-                {/* ICON */}
-                <div className="w-14 h-14 flex items-center justify-center bg-red-100 rounded-2xl mb-6">
-                  <Icon className="w-6 h-6 text-red-600" />
-                </div>
-
-                {/* TITLE */}
-                <h3 className="font-semibold text-lg">{item.title}</h3>
-
-                {/* DESC */}
-                <p className="text-gray-500 mt-3 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
-
-                {/* STAT */}
-                <p className="text-red-600 mt-6 text-sm font-medium">
-                  {item.stat}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* CORPORATE */}
-      <section className="py-20 px-6 bg-white">
-        {/* TITLE */}
-        <h2 className="text-3xl text-center font-semibold">
-          Corporate Collaborations
-        </h2>
-
-        <p className="text-center text-gray-500 mt-2">
-          Strategic partnerships with leading global organizations
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-10 mt-12 max-w-6xl mx-auto items-stretch">
-          {/* LEFT RED CARD */}
-          <div className="bg-gradient-to-br from-red-600 to-red-500 text-white p-10 rounded-2xl flex flex-col justify-between">
-            <div>
-              {/* ICON */}
-              <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-2xl mb-6">
-                <Building2 className="w-8 h-8 text-white" />
-              </div>
-
-              {/* TITLE */}
-              <h3 className="text-2xl font-semibold">Industry Partnerships</h3>
-
-              {/* DESC */}
-              <p className="mt-4 text-sm text-white/90 leading-relaxed">
-                We collaborate with Fortune 500 companies and leading regional
-                enterprises to ensure our curriculum remains industry-relevant
-                and our graduates are job-ready.
-              </p>
-            </div>
-
-            {/* BULLETS */}
-            <div className="mt-8 space-y-3">
-              {[
-                "200+ Corporate Partners",
-                "Executive Guest Lectures",
-                "Live Business Projects",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-white" />
-                  <span className="text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="space-y-5">
-            {[
-              {
-                title: "Corporate Learning Programs",
-                desc: "Customized executive education for organizational talent development.",
-              },
-              {
-                title: "Industry Research Projects",
-                desc: "Collaborative research initiatives addressing real business challenges.",
-              },
-              {
-                title: "Internship & Placement",
-                desc: "Direct recruitment pipelines with leading multinational corporations.",
-              },
-              {
-                title: "Guest Faculty Network",
-                desc: "Senior executives teaching specialized modules and masterclasses.",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-[#f7f7f7] p-6 rounded-2xl hover:shadow-sm transition"
-              >
-                <h4 className="font-semibold text-lg">{item.title}</h4>
-                <p className="text-gray-500 text-sm mt-2 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GLOBAL */}
-      <section className="py-20 bg-white px-6">
-        {/* TITLE */}
-        <h2 className="text-3xl text-center font-semibold">Global Exposure</h2>
-
-        {/* SUBTITLE */}
-        <p className="text-center text-gray-500 mt-2">
-          Expand your horizons with international learning opportunities
-        </p>
-
-        {/* GRID */}
-        <div className="grid md:grid-cols-4 gap-8 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              title: "International Residencies",
-              desc: "Campus visits to partner universities worldwide",
-              icon: Globe,
-            },
-            {
-              title: "Diverse Cohorts",
-              desc: "Students from 50+ countries in every program",
-              icon: Users,
-            },
-            {
-              title: "Global Business Projects",
-              desc: "Cross-border consulting and research",
-              icon: Briefcase,
-            },
-            {
-              title: "Alumni Network",
-              desc: "Connections across 6 continents",
-              icon: Network,
-            },
-          ].map((item, i) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={i}
-                className="bg-[#f7f7f7] p-8 rounded-2xl text-center hover:shadow-md transition"
-              >
-                {/* ICON */}
-                <div className="w-14 h-14 mx-auto flex items-center justify-center bg-red-100 rounded-2xl mb-6">
-                  <Icon className="w-6 h-6 text-red-600" />
-                </div>
-
-                {/* TITLE */}
-                <h3 className="font-semibold text-lg">{item.title}</h3>
-
-                {/* DESC */}
-                <p className="text-gray-500 mt-3 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* OUTCOMES */}
-      <section className="py-20 px-6 bg-white">
-        {/* TITLE */}
-        <h2 className="text-3xl text-center font-semibold">Student Outcomes</h2>
-
-        {/* SUBTITLE */}
-        <p className="text-center text-gray-500 mt-2">
-          Transforming careers and creating future leaders
-        </p>
-
-        {/* TOP STATS */}
-        <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              value: "45%",
-              title: "Salary Increase",
-              desc: "Average post-program salary growth within first year",
-            },
-            {
-              value: "90%",
-              title: "Career Advancement",
-              desc: "Graduates promoted or transitioned to leadership roles",
-            },
-            {
-              value: "95%",
-              title: "Satisfaction Rate",
-              desc: "Students highly satisfied with program outcomes",
-            },
-          ].map((item, i) => (
-            <div key={i} className="bg-[#f7f7f7] p-8 rounded-2xl text-center">
-              <h3 className="text-red-600 text-4xl font-bold">{item.value}</h3>
-              <h4 className="mt-3 font-semibold">{item.title}</h4>
-              <p className="text-gray-500 text-sm mt-2 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* BIG CARD */}
-        <div className="mt-16 max-w-6xl mx-auto bg-red-50 border border-red-100 rounded-3xl p-10 grid md:grid-cols-2 gap-10 items-center">
-          {/* LEFT */}
-          <div>
-            <h3 className="text-xl font-semibold">
-              Career Advancement Success
-            </h3>
-
-            <p className="text-gray-600 text-sm mt-4 leading-relaxed">
-              Our graduates consistently achieve remarkable career growth, with
-              promotions, role transitions, and entrepreneurial ventures
-              following program completion.
-            </p>
-
-            {/* BULLETS */}
-            <div className="mt-6 space-y-3">
-              {[
-                "Senior management promotions within 6-18 months",
-                "Successful career pivots to high-growth industries",
-                "Entrepreneurial ventures launched and scaled",
-                "C-suite and board-level appointments",
-                "International career relocations",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-red-500" />
-                  <span className="text-sm text-gray-700">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT STATS */}
-          <div className="grid grid-cols-2 gap-6">
-            {[
-              { value: "85%", label: "Promoted Within 18 Months" },
-              { value: "72%", label: "Transitioned Careers" },
-              { value: "65%", label: "Started Ventures" },
-              { value: "92%", label: "Job Satisfaction" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white p-6 rounded-2xl text-center shadow-sm"
-              >
-                <h3 className="text-red-600 text-3xl font-bold">
-                  {item.value}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* INFRA */}
-      <section className="py-20 bg-white px-6">
-        {/* TITLE */}
-        <h2 className="text-3xl text-center font-semibold">
-          Infrastructure Highlights
-        </h2>
-
-        {/* SUBTITLE */}
-        <p className="text-center text-gray-500 mt-2">
-          World-class facilities designed for optimal learning experiences
-        </p>
-
-        {/* GRID */}
-        <div className="grid md:grid-cols-2 gap-8 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              title: "State-of-the-Art Learning Centers",
-              desc: "Modern campuses equipped with smart classrooms, collaboration spaces, and technology infrastructure for hybrid learning.",
-              icon: Building2,
-            },
-            {
-              title: "Digital Library Access",
-              desc: "Access to 100,000+ digital resources, research databases, journals, and e-books from leading publishers worldwide.",
-              icon: BookOpen,
-            },
-            {
-              title: "Advanced LMS Platform",
-              desc: "AI-powered learning management system with mobile access, analytics, and personalized learning paths.",
-              icon: Network,
-            },
-            {
-              title: "Secure Technology Infrastructure",
-              desc: "Enterprise-grade security, data privacy, and 24/7 technical support ensuring seamless learning experiences.",
-              icon: Shield,
-            },
-          ].map((item, i) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={i}
-                className="bg-[#f7f7f7] p-8 rounded-2xl flex gap-5 hover:shadow-sm transition"
-              >
-                {/* ICON */}
-                <div className="w-14 h-14 flex items-center justify-center bg-red-100 rounded-2xl shrink-0">
-                  <Icon className="w-6 h-6 text-red-600" />
-                </div>
-
-                {/* CONTENT */}
-                <div>
-                  <h3 className="font-semibold text-lg">{item.title}</h3>
-
-                  <p className="text-gray-500 text-sm mt-2 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* AWARDS */}
-      <section className="py-20 px-6">
-        {/* TITLE */}
-        <h2 className="text-3xl text-center font-semibold">
-          Awards & Recognition
-        </h2>
-
-        {/* SUBTITLE */}
-        <p className="text-center text-gray-500 mt-2">
-          Excellence recognized by global education authorities
-        </p>
-
-        {/* GRID */}
-        <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              title: "Best Executive Education Platform",
-              org: "Global Education Awards",
-              year: "2024",
-            },
-            {
-              title: "Excellence in Digital Learning",
-              org: "EdTech Innovation Summit",
-              year: "2023",
-            },
-            {
-              title: "Top MBA Provider - GCC Region",
-              org: "Middle East Education Forum",
-              year: "2023",
-            },
-            {
-              title: "Student Support Excellence",
-              org: "International Education Council",
-              year: "2022",
-            },
-            {
-              title: "Innovation in Higher Education",
-              org: "World Education Congress",
-              year: "2022",
-            },
-            {
-              title: "Industry Partnership Award",
-              org: "Business Education Alliance",
-              year: "2021",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="bg-[#f7f7f7] p-8 rounded-2xl text-center hover:shadow-sm transition"
-            >
-              {/* ICON */}
-              <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 flex items-center justify-center bg-red-100 rounded-2xl">
-                  <Trophy className="w-7 h-7 text-red-600" />
-                </div>
-              </div>
-
-              {/* TITLE */}
-              <h3 className="font-semibold text-lg">{item.title}</h3>
-
-              {/* ORG */}
-              <p className="text-gray-500 text-sm mt-2">{item.org}</p>
-
-              {/* YEAR */}
-              <p className="text-red-600 text-sm mt-2 font-medium">
-                {item.year}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-6 bg-gradient-to-b from-red-600 to-red-700 text-white">
-        {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            The NexGrad Advantage
-          </h2>
-          <p className="mt-3 text-red-100">
-            Experience education that adapts to you, not the other way around
+      {/* SECTION 4: OUR STUDENT-FIRST PROMISE */}
+      <section className="py-20 px-6 bg-red-600 text-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold">Our Student-First Promise</h2>
+          <p className="mt-4 text-red-100 max-w-2xl mx-auto">
+            Everything we do begins with one simple belief: The right education decision should be based on your goals, not sales targets. That principle guides every conversation, every recommendation, and every admission journey.
           </p>
-        </div>
-
-        {/* CARDS */}
-        <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              icon: CheckCircle,
-              title: "Transparent Process",
-              desc: "No hidden fees, clear timelines, and straightforward admissions. You will know exactly what to expect at every stage.",
-            },
-            {
-              icon: TrendingUp,
-              title: "ROI-Driven",
-              desc: "Affordable tuition with flexible payment plans and significant career returns. Most students see salary increases within 12 months.",
-            },
-            {
-              icon: GraduationCap,
-              title: "Student-Centric",
-              desc: "From pre-admission to post-graduation, our support infrastructure ensures you never feel alone in your academic journey.",
-            },
-          ].map((item, i) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={i}
-                className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl hover:bg-white/20 transition"
-              >
-                {/* ICON */}
-                <div className="mb-6">
-                  <div className="w-14 h-14 flex items-center justify-center rounded-full border border-white/40">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                </div>
-
-                {/* TITLE */}
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-
-                {/* DESC */}
-                <p className="text-red-100 mt-3 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 text-left">
+            {promises.map((promise, i) => (
+              <div key={i} className="bg-white/10 p-6 rounded-xl flex items-start gap-4">
+                <CheckCircle className="w-6 h-6 text-red-200 shrink-0" />
+                <p className="text-sm text-white">{promise}</p>
               </div>
-            );
-          })}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: OUR UNIVERSITY NETWORK */}
+      <section className="py-20 px-6 bg-white text-center">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-semibold">Our University Network</h2>
+          <p className="text-gray-500 mt-4 max-w-3xl mx-auto">
+            Choosing the right university starts with understanding your options. NexGrad partners with recognised universities and awarding organisations that offer flexible, career-focused programmes for today's learners.
+          </p>
+          <div className="grid md:grid-cols-4 gap-6 mt-12">
+            {partners.map((partner, i) => (
+              <div key={i} className="border border-gray-100 bg-[#f7f7f7] p-8 rounded-2xl flex flex-col items-center hover:shadow-md transition">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+                  <Building2 className="w-8 h-8 text-gray-400" />
+                </div>
+                <h3 className="font-semibold">{partner.name}</h3>
+                <p className="text-xs text-gray-500 mt-2 flex-grow">{partner.desc}</p>
+                <button className="text-red-600 text-sm font-medium mt-4">Learn More &rarr;</button>
+              </div>
+            ))}
+          </div>
+          <button className="mt-12 text-red-600 font-semibold border-b border-red-600 pb-1">
+            Explore All Partner Universities &rarr;
+          </button>
+        </div>
+      </section>
+
+      {/* SECTION 6: WHAT CAN YOU STUDY */}
+      <section className="py-20 px-6 bg-[#f7f7f7]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl text-center font-semibold">What Can You Study Through NexGrad?</h2>
+          <p className="text-center text-gray-500 mt-4 max-w-3xl mx-auto mb-12">
+            Whether you are starting your higher education journey or preparing for your next career move, NexGrad offers programmes designed to support different professional goals. Our portfolio includes undergraduate, postgraduate, doctoral and executive programmes delivered through recognised university partners.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {programs.map((prog, i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col">
+                <h3 className="font-semibold text-lg text-red-600 mb-2">{prog.title}</h3>
+                <p className="text-sm text-gray-600 mb-6 flex-grow">{prog.desc}</p>
+                <button className="text-sm font-medium text-gray-800 flex items-center gap-1 w-max">
+                  Explore Programme <span className="text-red-600">&rarr;</span>
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <button className="bg-red-600 text-white px-6 py-3 rounded-lg font-medium shadow-sm hover:bg-red-700 transition">
+              Explore All Programmes &rarr;
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: DESIGNED FOR WORKING PROFESSIONALS */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl text-center font-semibold">Designed for Working Professionals</h2>
+          <p className="text-center text-gray-500 mt-4 max-w-3xl mx-auto mb-12">
+            Balancing work, family, and education is one of the biggest challenges faced by today's learners. That is why the programmes offered through NexGrad are selected with flexibility in mind, allowing students to continue building their qualifications without stepping away from their careers.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex gap-4 p-6 bg-[#f7f7f7] rounded-2xl">
+              <Laptop className="w-8 h-8 text-red-600 shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Continue Working While You Study</h3>
+                <p className="text-sm text-gray-600 mt-2">Advance your education without taking a career break. Flexible learning enables you to study alongside your professional responsibilities.</p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-6 bg-[#f7f7f7] rounded-2xl">
+              <Clock className="w-8 h-8 text-red-600 shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Learn at Your Own Pace</h3>
+                <p className="text-sm text-gray-600 mt-2">Access learning resources according to your schedule while meeting programme requirements and academic milestones.</p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-6 bg-[#f7f7f7] rounded-2xl">
+              <Target className="w-8 h-8 text-red-600 shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Apply What You Learn</h3>
+                <p className="text-sm text-gray-600 mt-2">The concepts you study today can often be applied immediately within your workplace, helping you grow professionally while you learn.</p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-6 bg-[#f7f7f7] rounded-2xl">
+              <TrendingUp className="w-8 h-8 text-red-600 shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Build Long-Term Career Value</h3>
+                <p className="text-sm text-gray-600 mt-2">Higher education is not just about earning another qualification. It is about preparing yourself for greater responsibilities, leadership opportunities, career transitions, and lifelong professional growth.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: WHY TRUST NEXGRAD? */}
+      <section className="py-20 px-6 bg-[#f7f7f7]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl text-center font-semibold">Why Trust NexGrad?</h2>
+          <p className="text-center text-gray-500 mt-4 max-w-3xl mx-auto mb-12">
+            Trust is earned through transparency, guidance, and a genuine commitment to helping learners succeed. We believe students should have complete clarity before making one of the most important investments in their future. Instead of simply helping you submit an application, we help you understand the complete picture so you can move forward with confidence.
+          </p>
+          <div className="grid md:grid-cols-4 gap-6 text-center">
+            {[
+              { title: "We Listen Before We Recommend", desc: "Every learner has different goals. Our recommendations begin with understanding your aspirations, not with promoting a particular university." },
+              { title: "We Simplify Complex Decisions", desc: "From accreditation and eligibility to programme comparisons and admission requirements, we explain everything in straightforward language." },
+              { title: "We Stay with You Throughout the Journey", desc: "Our support continues beyond your application. From admission guidance to answering your questions during the enrolment process, we remain available." },
+              { title: "We Believe In Long-Term Relationships", desc: "Our success is measured by the confidence our students have in their decisions and the progress they make throughout their academic and professional journey." }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm">
+                <h3 className="font-semibold text-lg text-gray-800">{item.title}</h3>
+                <p className="text-sm text-gray-500 mt-3">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9: FREQUENTLY ASKED QUESTIONS */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl text-center font-semibold mb-12">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b border-gray-200 pb-6">
+                <h3 className="font-semibold text-lg flex gap-3">
+                  <HelpCircle className="w-6 h-6 text-red-600 shrink-0" />
+                  {faq.q}
+                </h3>
+                <p className="text-gray-600 mt-3 ml-9 text-sm leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-20 text-center bg-white">
-        <h2 className="text-3xl font-semibold">Ready to Start Your Journey?</h2>
-
-        <div className="mt-6 flex justify-center gap-4">
-          <button className="bg-red-600 text-white px-6 py-3 rounded-lg">
-            Explore Programs
-          </button>
-          <button className="border border-red-600 px-6 py-3 rounded-lg">
-            Schedule a Call
-          </button>
+      <section className="py-20 px-6 bg-gradient-to-br from-gray-900 to-gray-800 text-white text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-semibold">Your Future Starts with the Right Decision</h2>
+          <p className="mt-6 text-gray-300 text-lg leading-relaxed">
+            The right university can shape your career for years to come. Whether you are planning your first degree, preparing for leadership opportunities, or investing in professional growth, NexGrad is here to help you make that decision with confidence.
+            <br /><br />
+            Receive personalised guidance, compare recognised universities, and choose the programme that best aligns with your goals.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+            <button className="bg-red-600 hover:bg-red-700 transition text-white px-8 py-3 rounded-lg font-medium">
+              Explore Programmes
+            </button>
+            <button className="border border-white hover:bg-white hover:text-gray-900 transition px-8 py-3 rounded-lg font-medium">
+              Talk to an Advisor
+            </button>
+          </div>
         </div>
       </section>
     </div>
+  );
+}
+
+// Simple internal icon for layout consistency
+function TrendingUp(props: any) {
+  return (
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+      <polyline points="17 6 23 6 23 12"></polyline>
+    </svg>
   );
 }

@@ -1,55 +1,130 @@
+import fs from "fs";
+import path from "path";
+import Link from "next/link";
 import TestimonialCard from "@/app/components/ui/TestimonialCard";
+import { FiArrowRight } from "react-icons/fi";
 
-export default function AlumniSuccess() {
+function getTestimonials() {
+  try {
+    const filePath = path.join(
+      process.cwd(),
+      "data",
+      "testimonials.json"
+    );
+
+    if (!fs.existsSync(filePath)) {
+      return [];
+    }
+
+    return JSON.parse(
+      fs.readFileSync(filePath, "utf8")
+    );
+  } catch {
+    return [];
+  }
+}
+
+export default async function AlumniSuccess() {
+  const testimonials = getTestimonials()
+    .filter((item: any) => item.status === "active")
+    .slice(0, 3);
+
+  if (!testimonials.length) return null;
+
   return (
-    <section className="w-full py-24 bg-[#f7f7f7]">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="py-24 bg-white">
+
+      <div className="max-w-7xl mx-auto px-6">
+
         {/* Heading */}
-        <h2 className="text-3xl font-semibold mb-2">
-          Success Stories from Our Alumni
-        </h2>
 
-        <p className="text-gray-500">
-          Hear how our graduates transformed their careers and achieved their
-          goals
-        </p>
+        <div className="text-center max-w-4xl mx-auto mb-16">
 
-        {/* Cards */}
-        <div className="grid lg:grid-cols-3 gap-8 mt-12 text-left">
-          <TestimonialCard
-            image="/testi1.jfif"
-            name="Ahmed Al-Rashid"
-            role="Senior Director, Tech Corp"
-            quote="The personalized guidance throughout my MBA journey was exceptional. From admission to graduation, I felt supported every step of the way."
-            program="Executive MBA Graduate"
-            initial="A"
-            video
-          />
+          <span className="inline-flex bg-red-50 text-red-600 px-5 py-2 rounded-full text-sm font-semibold mb-5">
+            Testimonials
+          </span>
 
-          <TestimonialCard
-            name="Sarah Johnson"
-            role="VP Operations, Retail Giant"
-            quote="The flexibility and academic rigor were perfectly balanced. I could advance my education while excelling in my career."
-            program="Global MBA Graduate"
-            initial="S"
-          />
+          <h2 className="text-4xl lg:text-5xl font-bold">
 
-          <TestimonialCard
-            image="/testi2.jfif"
-            name="Dr. Raj Patel"
-            role="Chief Strategy Officer"
-            quote="The DBA program equipped me with research skills and strategic thinking that propelled me to C-suite leadership."
-            program="DBA Graduate"
-            initial="D"
-            video
-          />
+            Success Stories from
+            <span className="text-red-600">
+              {" "}Working Professionals
+            </span>
+
+          </h2>
+
+          <p className="mt-6 text-lg text-gray-600 leading-8">
+
+            Hear from learners who balanced work and education while
+            progressing toward new career opportunities, leadership
+            roles, and professional growth.
+
+          </p>
+
         </div>
 
-        {/* CTA */}
-        <button className="mt-14 bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition">
-          Join Our Alumni Network →
-        </button>
+        {/* Testimonials */}
+
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+
+          {testimonials.map((testimonial: any) => (
+
+            <TestimonialCard
+              key={testimonial.id}
+              image={
+                testimonial.image ||
+                "/testi-placeholder.jpg"
+              }
+              name={testimonial.name}
+              role={testimonial.role}
+              quote={testimonial.quote}
+              program={testimonial.program}
+              initial={
+                testimonial.name?.charAt(0) || "N"
+              }
+              video={testimonial.video}
+            />
+
+          ))}
+
+        </div>
+
+        {/* Bottom Banner */}
+
+        <div className="mt-20 rounded-3xl bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+
+          <div>
+
+            <h3 className="text-3xl font-bold">
+
+              Ready to Become Our Next Success Story?
+
+            </h3>
+
+            <p className="mt-3 text-red-100 text-lg">
+
+              Join thousands of professionals across the UAE and GCC
+              who have accelerated their careers with NexGrad.
+
+            </p>
+
+          </div>
+
+          <Link
+            href="/apply"
+            className="inline-flex items-center gap-3 bg-white text-red-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition"
+          >
+
+            Apply Today
+
+            <FiArrowRight />
+
+          </Link>
+
+        </div>
+
       </div>
+
     </section>
   );
 }

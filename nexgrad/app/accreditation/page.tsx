@@ -20,304 +20,219 @@ import {
 } from "lucide-react";
 
 export default function AccreditationPage() {
-  const [open, setOpen] = useState<number | null>(null);
-  const [active, setActive] = useState<number | null>(0);
-  const data = [
+  const [active, setActive] = useState<number | null>(null);
+
+  const regionData = [
     {
-      icon: Shield,
-      title: "Partner Vetting",
-      desc: "Rigorous evaluation of all partner universities before collaboration, ensuring they meet our quality benchmarks.",
+      title: "Malaysia",
+      subtitle: "Ministry of Higher Education",
+      desc: "Regulated by the Malaysian Qualifications Agency (MQA) for quality assurance and recognised universities.",
+    },
+    {
+      title: "India",
+      subtitle: "University Grants Commission (UGC)",
+      desc: "Evaluated by the National Assessment and Accreditation Council (NAAC) for recognised universities.",
+    },
+    {
+      title: "United Kingdom",
+      subtitle: "Ofqual",
+      desc: "Regulates awarding organisations to ensure qualifications and academic progression standards.",
+    },
+  ];
+
+  const recognitionBodies = [
+    {
+      icon: Building2,
+      title: "University Grants Commission (UGC)",
+      desc: "The statutory body responsible for coordinating, regulating, and maintaining standards of higher education in India. Applies to Indian Universities.",
     },
     {
       icon: FileCheck,
-      title: "Curriculum Review",
-      desc: "Regular audits of program content to ensure relevance, currency, and alignment with industry needs.",
+      title: "National Assessment and Accreditation Council (NAAC)",
+      desc: "Evaluates the overall quality of higher education institutions in India. Universities receive grades such as A++, A+, A, and others based on institutional performance.",
+    },
+    {
+      icon: Shield,
+      title: "Malaysian Qualifications Agency (MQA)",
+      desc: "Responsible for quality assurance within Malaysia's higher education system. It evaluates programmes against established academic standards.",
     },
     {
       icon: Globe,
-      title: "International Recognition",
-      desc: "All degrees are internationally recognized and accepted for further study or employment worldwide.",
+      title: "Ministry of Higher Education (Malaysia)",
+      desc: "Oversees the country's higher education sector and establishes policies that govern universities and higher education institutions.[cite:",
     },
     {
-      icon: Building2,
-      title: "Institutional Stability",
-      desc: "Partner with established universities with proven track records and financial stability.",
+      icon: Scale,
+      title: "Ofqual",
+      desc: "The Office of Qualifications and Examinations Regulation regulates qualifications, examinations, and awarding organisations in England.",
     },
     {
       icon: Award,
-      title: "Faculty Credentials",
-      desc: "All instructors hold advanced degrees and significant industry or research experience.",
-    },
-    {
-      icon: CheckCircle,
-      title: "Student Outcomes",
-      desc: "Continuous monitoring of graduation rates, career placement, and student satisfaction.",
+      title: "QS World & THE Rankings",
+      desc: "Evaluates universities across multiple indicators including academic reputation, research, and international outlook. They measure performance, not accredit universities.",
     },
   ];
 
   const Tabledata = [
     {
-      name: "European Business School",
-      country: "France",
-      aacsb: true,
-      equis: true,
-      amba: true,
+      name: "City University Malaysia",
+      country: "Malaysia",
+      recognition: "Ministry of Higher Education",
+      framework: "MQA",
+      rankings: "QS Stars",
     },
     {
-      name: "London School",
-      country: "UK",
-      aacsb: true,
-      equis: false,
-      amba: true,
+      name: "Shoolini University",
+      country: "India",
+      recognition: "UGC",
+      framework: "NAAC A+",
+      rankings: "QS, THE",
     },
     {
-      name: "Swiss Institute",
-      country: "Switzerland",
-      aacsb: false,
-      equis: true,
-      amba: true,
+      name: "Amity University Online",
+      country: "India",
+      recognition: "UGC",
+      framework: "NAAC A+",
+      rankings: "Various Global Rankings",
     },
     {
-      name: "American Business University",
-      country: "USA",
-      aacsb: true,
-      equis: false,
-      amba: false,
-    },
-    {
-      name: "Singapore Management School",
-      country: "Singapore",
-      aacsb: true,
-      equis: true,
-      amba: false,
-    },
-    {
-      name: "Dubai Business College",
-      country: "UAE",
-      aacsb: false,
-      equis: false,
-      amba: true,
+      name: "OTHM",
+      country: "United Kingdom",
+      recognition: "Ofqual",
+      framework: "RQF",
+      rankings: "Academic Progression Framework",
     },
   ];
 
-  const items = [
+  const misconceptions = [
     {
-      title: "Ministry of Education (EU)",
-      region: "European Union",
-      desc: "European partner universities are regulated by national ministries of education and must comply with the Bologna Process standards for higher education.",
-      icon: <Building2 className="w-6 h-6 text-red-500" />,
+      title: '"A Highly Ranked University Is Always Better."',
+      region: "Misconception 1",
+      desc: "A global ranking reflects how a university performs across selected indicators... It does not automatically mean that every programme offered by that university is the best choice for every student.",
+      icon: <Award className="w-6 h-6 text-red-500" />,
     },
     {
-      title: "U.S. Department of Education",
-      region: "United States",
-      desc: "American partner institutions are accredited by agencies recognized by the U.S. Department of Education and the Council for Higher Education Accreditation (CHEA).",
+      title: '"Recognition and Accreditation Mean the Same Thing."',
+      region: "Misconception 2",
+      desc: "Recognition confirms that an institution operates within the recognised higher education framework of its country. Accreditation evaluates academic quality, programme standards, or institutional performance.",
+      icon: <FileCheck className="w-6 h-6 text-red-500" />,
+    },
+    {
+      title: '"One Education Authority Regulates Universities Worldwide."',
+      region: "Misconception 3",
+      desc: "Every country has its own higher education system. Each system operates independently while maintaining its own quality standards.",
       icon: <Globe className="w-6 h-6 text-red-500" />,
     },
     {
-      title: "Quality Assurance Agency (QAA)",
-      region: "United Kingdom",
-      desc: "UK partner universities are regulated by the QAA, ensuring quality standards across teaching, learning, and student experience.",
-      icon: <Scale className="w-6 h-6 text-red-500" />,
-    },
-    {
-      title: "Ministry of Higher Education (GCC)",
-      region: "Gulf Cooperation Council",
-      desc: "Regional partners comply with national higher education regulations and quality assurance frameworks in GCC countries.",
-      icon: <BadgeCheck className="w-6 h-6 text-red-500" />,
+      title: '"All Online Degrees Are the Same."',
+      region: "Misconception 4",
+      desc: "The quality and recognition of an online degree depend on the university offering the programme and the regulatory framework under which it operates.",
+      icon: <Shield className="w-6 h-6 text-red-500" />,
     },
   ];
 
-  const Certdata = [
+  const evaluations = [
     {
-      title: "Academic Standards",
-      icon: <FileText className="w-6 h-6 text-red-500" />,
-      points: [
-        "PhD-qualified faculty",
-        "Research output requirements",
-        "Peer-reviewed curriculum",
-        "Student-faculty ratio compliance",
-      ],
-    },
-    {
-      title: "Institutional Standards",
+      title: "Academic Recognition",
       icon: <Building2 className="w-6 h-6 text-red-500" />,
       points: [
-        "Financial stability proof",
-        "Infrastructure adequacy",
-        "Library and resource access",
-        "Governance structure",
+        "Review university regulatory frameworks",
+        "Verify respective country recognition",
+        "Assess awarding organisation status",
       ],
     },
     {
-      title: "Program Standards",
-      icon: <Award className="w-6 h-6 text-red-500" />,
+      title: "Quality & Relevance",
+      icon: <FileText className="w-6 h-6 text-red-500" />,
       points: [
-        "Learning outcome alignment",
-        "Industry relevance",
-        "Continuous improvement",
-        "Graduate employability",
+        "Examine institutional quality measures",
+        "Align with industry expectations",
+        "Address evolving workplace requirements",
       ],
     },
-  ];
-
-  const complitems = [
     {
-      title: "Annual Audits",
-      desc: "Regular independent audits to ensure ongoing compliance with accreditation standards.",
-      icon: <Lock className="w-5 h-5 text-red-500" />,
-    },
-    {
-      title: "Quality Reviews",
-      desc: "Comprehensive curriculum and teaching quality reviews every academic year.",
-      icon: <FileCheck className="w-5 h-5 text-red-500" />,
-    },
-    {
-      title: "Student Feedback",
-      desc: "Continuous monitoring of student satisfaction and academic outcomes.",
-      icon: <MessageCircle className="w-5 h-5 text-red-500" />,
-    },
-    {
-      title: "Risk Management",
-      desc: "Proactive identification and mitigation of quality assurance risks.",
-      icon: <Shield className="w-5 h-5 text-red-500" />,
-    },
-  ];
-
-  const recoitems = [
-    {
-      title: "UNESCO Recognition",
-      desc: "Listed in UNESCO database of accredited institutions",
-    },
-    {
-      title: "WES Evaluation",
-      desc: "Accepted by World Education Services",
-    },
-    {
-      title: "NARIC Approval",
-      desc: "National Recognition Information Centers",
-    },
-    {
-      title: "Professional Bodies",
-      desc: "Recognized by PMI, CIPD, CFA, and more",
-    },
-    {
-      title: "Government Attestation",
-      desc: "Ministry-level degree authentication",
-    },
-    {
-      title: "Industry Acceptance",
-      desc: "Approved by Fortune 500 companies",
-    },
-    {
-      title: "Academic Equivalency",
-      desc: "Credit transfer to other universities",
-    },
-    {
-      title: "Visa Eligibility",
-      desc: "Accepted for work and study visas",
-    },
-  ];
-
-  const steps = [
-    {
-      title: "Visit Official Accreditation Websites",
-      desc: "Access the official websites of AACSB, EQUIS, or AMBA to search for accredited institutions. You can verify the accreditation status of any partner university directly.",
-    },
-    {
-      title: "Check University Credentials",
-      desc: "Visit the partner university's official website to view their accreditation certificates and recognition documents in the 'About' or 'Accreditation' sections.",
-    },
-    {
-      title: "Contact NexGrad Admissions",
-      desc: "Reach out to our admissions team who can provide you with official accreditation documentation for any program you're interested in.",
-    },
-    {
-      title: "Verify with Relevant Authorities",
-      desc: "Contact the Ministry of Education in your country or relevant professional bodies to confirm recognition of your chosen program.",
+      title: "Flexibility & Support",
+      icon: <MessageCircle className="w-6 h-6 text-red-500" />,
+      points: [
+        "Evaluate learning flexibility for professionals",
+        "Assess academic guidance resources",
+        "Ensure long-term career value",
+      ],
     },
   ];
 
   const faqs = [
     {
-      q: "What is the difference between AACSB, EQUIS, and AMBA?",
-      a: "AACSB is the oldest and most prestigious business school accreditation (USA-based), EQUIS focuses on internationalization and corporate connections (Europe-based), and AMBA specifically accredits MBA programs. All three are internationally recognized as gold standards.",
+      q: "Why is university recognition important?",
+      a: "Recognition confirms that a university operates within the recognised higher education framework of its country. It provides confidence that the institution follows established academic standards and quality requirements.",
     },
     {
-      q: "Will my degree be recognized in my home country?",
-      a: "All our partner universities hold internationally recognized accreditations that are accepted globally. However, we recommend checking with your country's Ministry of Education or relevant professional bodies for specific recognition requirements.",
+      q: "What is the difference between recognition and accreditation?",
+      a: "Recognition relates to the legal and regulatory status of an institution. Accreditation evaluates academic quality, programme standards, or institutional performance. Both are important, but they serve different purposes.",
     },
     {
-      q: "Can I pursue a PhD with a degree from your partner universities?",
-      a: "Yes, degrees from accredited institutions are recognized for further education worldwide. Our alumni have successfully gained admission to PhD programs at top-tier universities globally.",
+      q: "Does a higher university ranking mean a better degree?",
+      a: "Not necessarily. Rankings measure institutional performance using selected indicators, while the right university depends on your individual goals, programme requirements, and preferred learning experience.",
     },
     {
-      q: "How often are accreditations renewed?",
-      a: "Accrediting bodies typically conduct reviews every 5–10 years. During this period, institutions must maintain continuous compliance and submit annual reports demonstrating quality standards.",
+      q: "Are online degrees recognised?",
+      a: "Recognition depends on the university offering the programme and the applicable regulatory framework, not on whether learning takes place online or on campus.",
     },
     {
-      q: "What happens if a university loses its accreditation?",
-      a: "This is extremely rare and would only happen after years of non-compliance. If this occurred, NexGrad would immediately discontinue the partnership and assist enrolled students in transferring to another accredited institution.",
+      q: "How can I verify if a university is recognised?",
+      a: "You can review the relevant regulatory authorities, accreditation bodies, and official university information.NexGrad advisors can also help you understand the recognition applicable to your chosen programme.",
     },
     {
-      q: "Are online degrees from your partners equally accredited?",
-      a: "Yes, accreditation applies to the institution and program, not the delivery mode. Online and on-campus degrees from our partners have the same accreditation status and recognition.",
+      q: "Does every country have the same education authority?",
+      a: "No. Each country maintains its own higher education framework and regulatory bodies responsible for overseeing universities and academic quality.",
     },
   ];
-
-  const renderCell = (value: boolean) => {
-    return value ? (
-      <span className="text-gray text-lg font-medium">
-        <CheckCircle style={{ color: "red" }} />
-      </span>
-    ) : (
-      <span className="text-gray-400 text-lg">-</span>
-    );
-  };
 
   return (
     <main className="bg-[#f8f9fb] text-gray-800">
       {/* HERO */}
       <section className="text-center py-20 px-6">
         <div className="inline-block border border-red-200 text-red-500 px-4 py-1 rounded-full text-sm mb-4">
-          Globally Recognized Quality Standards
+          Choose Your University with Confidence
         </div>
 
         <h1 className="text-5xl font-bold">
-          Accreditation &{" "}
-          <span className="text-red-500">Quality Assurance</span>
+          Accreditations & <span className="text-red-500">Recognition</span>
         </h1>
 
-        <p className="text-gray-500 mt-6 max-w-2xl mx-auto">
-          Every program offered through NexGrad meets the highest international
-          standards for academic excellence.
+        <p className="text-gray-500 mt-6 max-w-2xl mx-auto leading-relaxed">
+          One of the first questions every student asks is: &quot;Will my degree be recognised?&quot; 
+          Every country has its own higher education system, regulatory authorities, accreditation standards, and quality assurance frameworks.
+          This page explains the most important recognition bodies, helping you understand what they mean and why they matter.
         </p>
       </section>
 
-      {/* WHY ACCREDITATION */}
+      {/* WHY RECOGNITION MATTERS */}
       <section className="py-24 bg-[#f8f9fb]">
         <div className="max-w-7xl mx-auto px-12 grid lg:grid-cols-2 gap-16 items-center">
           {/* LEFT CONTENT */}
           <div>
             <h2 className="text-4xl font-semibold text-gray-900 mb-6">
-              Why Accreditation Matters
+              Why Recognition Matters More Than You Think
             </h2>
 
             <p className="text-gray-500 text-lg mb-8 leading-relaxed max-w-lg">
-              Accreditation ensures that your education meets global standards.
+              Many students begin their search by comparing tuition fees, course duration, or university rankings.
+              While these factors are important, they should never be considered before understanding whether a university and its programmes are appropriately recognised.
             </p>
 
             <div className="space-y-5">
               {[
-                "Global Recognition",
-                "Transfer Credits",
-                "Career Advancement",
-                "Quality Education",
+                "Confidence in the quality of education.",
+                "Eligibility for further studies.",
+                "Employer perception.",
+                "Professional credibility.",
+                "Long-term academic and career opportunities.",
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-6 h-6 rounded-full border border-red-500 flex items-center justify-center mt-1">
                     <span className="text-red-500 text-sm">✓</span>
                   </div>
-
                   <p className="text-gray-800 text-base">{item}</p>
                 </div>
               ))}
@@ -336,66 +251,32 @@ export default function AccreditationPage() {
         </div>
       </section>
 
-      {/* ACCREDITING BODIES */}
+      {/* UNDERSTANDING RECOGNITION AROUND THE WORLD */}
       <section className="py-24 bg-[#f8f9fb]">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
-            Our Accrediting Bodies
+            Understanding Recognition Around the World
           </h2>
-
-          {/* Subheading */}
           <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
-            NexGrad partners exclusively with universities accredited by these
-            prestigious organizations
+            One of the biggest misconceptions in higher education is that a single organisation approves universities worldwide.
+            In reality, every country has its own education system.
           </p>
 
-          {/* Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-            {[
-              {
-                title: "AACSB",
-                subtitle:
-                  "Association to Advance Collegiate Schools of Business",
-                desc: "The gold standard for business schools, held by less than 5% of business schools worldwide.",
-              },
-              {
-                title: "EQUIS",
-                subtitle: "European Quality Improvement System",
-                desc: "European-based accreditation focused on international excellence in management education.",
-              },
-              {
-                title: "AMBA",
-                subtitle: "Association of MBAs",
-                desc: "Specifically accredits MBA programs ensuring highest quality standards.",
-              },
-              {
-                title: "ACBSP",
-                subtitle:
-                  "Accreditation Council for Business Schools and Programs",
-                desc: "Leading specialized accreditation for business education programs.",
-              },
-            ].map((item, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            {regionData.map((item, i) => (
               <div
                 key={i}
                 className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition duration-300"
               >
-                {/* Icon */}
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-100 flex items-center justify-center">
-                  <Award className="w-7 h-7 text-red-500" strokeWidth={2} />
+                  <Globe className="w-7 h-7 text-red-500" strokeWidth={2} />
                 </div>
-
-                {/* Title */}
                 <h3 className="text-lg font-semibold text-gray-900">
                   {item.title}
                 </h3>
-
-                {/* Subtitle */}
-                <p className="text-gray-500 text-sm mt-2 leading-snug">
+                <p className="text-gray-500 text-sm mt-2 leading-snug font-medium">
                   {item.subtitle}
                 </p>
-
-                {/* Description */}
                 <p className="text-gray-400 text-sm mt-4 leading-relaxed">
                   {item.desc}
                 </p>
@@ -405,40 +286,30 @@ export default function AccreditationPage() {
         </div>
       </section>
 
-      {/* QUALITY STANDARDS */}
+      {/* RECOGNITION BODIES */}
       <section className="py-24 bg-[#f8f9fb]">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
-            Our Quality Standards
+            Understanding the Recognition Bodies
           </h2>
-
-          {/* Subheading */}
           <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
-            Beyond accreditation, we maintain rigorous internal standards to
-            ensure excellence
+            University recognition can seem complicated because different organisations perform different roles.
           </p>
 
-          {/* Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-            {data.map((item, i) => {
+            {recognitionBodies.map((item, i) => {
               const Icon = item.icon;
               return (
                 <div
                   key={i}
                   className="bg-white rounded-2xl p-8 text-left shadow-sm hover:shadow-md transition"
                 >
-                  {/* Icon */}
                   <div className="mb-5">
                     <Icon className="w-8 h-8 text-red-500" strokeWidth={2} />
                   </div>
-
-                  {/* Title */}
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {item.title}
                   </h3>
-
-                  {/* Description */}
                   <p className="text-gray-500 text-sm leading-relaxed">
                     {item.desc}
                   </p>
@@ -449,53 +320,40 @@ export default function AccreditationPage() {
         </div>
       </section>
 
-      {/* TABLE */}
+      {/* TABLE SECTION */}
       <section className="py-24 bg-[#f8f9fb]">
         <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-gray-900">
-            Partner University Accreditations
+            Recognition Across Our Partner Universities
           </h2>
-
-          {/* Subheading */}
           <p className="text-center text-gray-500 mt-4">
-            View the accreditation status of our partner institutions
+            Every university within the NexGrad network operates under the recognition and quality assurance framework of its respective country.
           </p>
 
-          {/* Table */}
           <div className="mt-12 bg-white rounded-2xl overflow-hidden border border-gray-200">
             <table className="w-full">
-              {/* Header */}
               <thead className="bg-gray-50">
                 <tr className="text-left text-gray-700 text-sm">
-                  <th className="px-6 py-4 font-semibold">University</th>
+                  <th className="px-6 py-4 font-semibold">Partner</th>
                   <th className="px-6 py-4 font-semibold">Country</th>
-                  <th className="px-6 py-4 text-center font-semibold">AACSB</th>
-                  <th className="px-6 py-4 text-center font-semibold">EQUIS</th>
-                  <th className="px-6 py-4 text-center font-semibold">AMBA</th>
+                  <th className="px-6 py-4 font-semibold">Recognition</th>
+                  <th className="px-6 py-4 font-semibold">Quality Framework</th>
+                  <th className="px-6 py-4 font-semibold">Rankings</th>
                 </tr>
               </thead>
-
-              {/* Body */}
               <tbody>
                 {Tabledata.map((item, i) => (
                   <tr
                     key={i}
                     className="border-t border-gray-200 hover:bg-gray-50 transition"
                   >
-                    <td className="px-6 py-5 text--gray-900">
+                    <td className="px-6 py-5 text-gray-900">
                       <b>{item.name}</b>
                     </td>
                     <td className="px-6 py-5 text-gray-600">{item.country}</td>
-                    <td className="px-6 py-5 text-center">
-                      {renderCell(item.aacsb)}
-                    </td>
-                    <td className="px-6 py-5 text-center">
-                      {renderCell(item.equis)}
-                    </td>
-                    <td className="px-6 py-5 text-center">
-                      {renderCell(item.amba)}
-                    </td>
+                    <td className="px-6 py-5 text-gray-600">{item.recognition}</td>
+                    <td className="px-6 py-5 text-gray-600">{item.framework}</td>
+                    <td className="px-6 py-5 text-gray-600">{item.rankings}</td>
                   </tr>
                 ))}
               </tbody>
@@ -504,40 +362,29 @@ export default function AccreditationPage() {
         </div>
       </section>
 
-      {/* GOVERNING BODIES */}
+      {/* COMMON MISCONCEPTIONS */}
       <section className="py-24 bg-[#f6f8fb]">
         <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0f172a]">
-            Governing Bodies & Regulatory Framework
+            Common Misconceptions About University Recognition
           </h2>
-
           <p className="text-center text-gray-500 mt-4 max-w-2xl mx-auto">
-            Our partner institutions operate under strict oversight from
-            educational authorities
+            Understanding these differences helps you evaluate universities with greater confidence and avoid making decisions based on incomplete information.
           </p>
 
-          {/* Grid */}
           <div className="mt-16 grid md:grid-cols-2 gap-8">
-            {items.map((item, i) => (
+            {misconceptions.map((item, i) => (
               <div
                 key={i}
                 className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition"
               >
-                {/* Icon */}
                 <div className="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 mb-5">
                   {item.icon}
                 </div>
-
-                {/* Title */}
                 <h3 className="text-lg font-semibold text-gray-900">
                   {item.title}
                 </h3>
-
-                {/* Region */}
                 <p className="text-sm text-gray-500 mt-1">{item.region}</p>
-
-                {/* Description */}
                 <p className="text-gray-600 mt-4 leading-relaxed text-sm">
                   {item.desc}
                 </p>
@@ -547,45 +394,36 @@ export default function AccreditationPage() {
         </div>
       </section>
 
-      {/* CERTIFICATION */}
+      {/* HOW NEXGRAD EVALUATES */}
       <section className="py-24 bg-[#f6f8fb]">
         <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0f172a]">
-            Certification Standards & Requirements
+            How NexGrad Evaluates Every University Partner
           </h2>
-
           <p className="text-center text-gray-500 mt-4 max-w-2xl mx-auto">
-            Understanding the rigorous criteria our partner universities must
-            meet
+            Students trust us because we do more than introduce universities.
+            Before partnering with an institution, we evaluate multiple factors.
           </p>
 
-          {/* Cards */}
           <div className="mt-16 grid md:grid-cols-3 gap-8">
-            {Certdata.map((item, i) => (
+            {evaluations.map((item, i) => (
               <div
                 key={i}
                 className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition"
               >
-                {/* Icon */}
                 <div className="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 mb-6">
                   {item.icon}
                 </div>
-
-                {/* Title */}
                 <h3 className="text-lg font-semibold text-gray-900 mb-5">
                   {item.title}
                 </h3>
-
-                {/* Points */}
                 <ul className="space-y-3">
                   {item.points.map((point, idx) => (
                     <li
                       key={idx}
                       className="flex items-start gap-3 text-gray-600 text-sm"
                     >
-                      <CheckCircle className="w-5 h-5 text-red-500 mt-0.5" />
-
+                      <CheckCircle className="w-5 h-5 text-red-500 mt-0.5 shrink-0" />
                       <span>{point}</span>
                     </li>
                   ))}
@@ -596,229 +434,16 @@ export default function AccreditationPage() {
         </div>
       </section>
 
-      {/* COMPLIANCE */}
-      <section className="py-24 bg-[#f6f8fb]">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0f172a]">
-            Compliance & Quality Assurance
-          </h2>
-
-          <p className="text-center text-gray-500 mt-4 mb-16">
-            Our comprehensive approach to maintaining excellence
-          </p>
-
-          {/* Layout */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* LEFT IMAGE */}
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216" // replace with your actual image
-                alt="Compliance"
-                className="rounded-2xl w-full object-cover shadow-md"
-                style={{ height: "500px" }}
-              />
-            </div>
-
-            {/* RIGHT CARDS */}
-            <div className="space-y-6">
-              {complitems.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex gap-4 items-start bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition"
-                >
-                  {/* Icon */}
-                  <div className="w-10 h-10 flex items-center justify-center bg-red-50 rounded-lg">
-                    {item.icon}
-                  </div>
-
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* RECOGNITION */}
-      <section className="py-24 bg-[#f6f8fb]">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0f172a]">
-            Recognition & Approvals
-          </h2>
-
-          <p className="text-center text-gray-500 mt-4 mb-16">
-            Endorsed and recognized by leading educational and professional
-            bodies
-          </p>
-
-          {/* Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {recoitems.map((item, i) => (
-              <div
-                key={i}
-                className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition"
-              >
-                {/* Icon */}
-                <div className="w-12 h-12 mx-auto flex items-center justify-center bg-red-50 rounded-full mb-4">
-                  <BadgeCheck className="w-6 h-6 text-red-500" />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-base font-semibold text-gray-900">
-                  {item.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GLOBAL STATS */}
-      <section className="py-24 bg-[#f6f8fb]">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0f172a]">
-            Global Academic Recognition
-          </h2>
-
-          <p className="text-center text-gray-500 mt-4 mb-16">
-            Your degree is recognized across continents and borders
-          </p>
-
-          {/* RED STATS BAR */}
-          <div className="bg-gradient-to-r from-red-600 to-red-500 rounded-2xl text-white grid md:grid-cols-3 text-center py-10 px-6 mb-12">
-            <div>
-              <h3 className="text-3xl font-bold">150+</h3>
-              <p className="mt-2 font-medium">Countries</p>
-              <p className="text-sm text-red-100 mt-1">
-                Where degrees are recognized
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold">100%</h3>
-              <p className="mt-2 font-medium">Global Acceptance</p>
-              <p className="text-sm text-red-100 mt-1">By leading employers</p>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold">50+</h3>
-              <p className="mt-2 font-medium">Partner Universities</p>
-              <p className="text-sm text-red-100 mt-1">Across all continents</p>
-            </div>
-          </div>
-
-          {/* REGION CARDS */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* CARD 1 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-              <h3 className="text-lg font-semibold mb-4">
-                North America & Europe
-              </h3>
-
-              <ul className="space-y-3 text-gray-600 text-sm">
-                {[
-                  "Accepted for employment in USA, Canada, and European Union",
-                  "Credit transferable to other accredited institutions",
-                  "Eligible for professional certifications (CPA, CFA, PMP)",
-                  "Recognized for postdoctoral and PhD admissions",
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-3">
-                    <CheckCircle className="w-5 h-5 text-red-500 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* CARD 2 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-              <h3 className="text-lg font-semibold mb-4">Middle East & Asia</h3>
-
-              <ul className="space-y-3 text-gray-600 text-sm">
-                {[
-                  "Ministry attestation in GCC countries",
-                  "Recognized by major employers in UAE, Saudi Arabia, Qatar",
-                  "Accepted in India, Singapore, and Hong Kong",
-                  "Eligible for government and private sector positions",
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-3">
-                    <CheckCircle className="w-5 h-5 text-red-500 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Verification */}
-      <section className="py-24 bg-[#f6f8fb]">
-        <div className="max-w-4xl mx-auto px-6">
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0f172a]">
-            Accreditation Verification Process
-          </h2>
-
-          <p className="text-center text-gray-500 mt-4 mb-16">
-            How to verify the accreditation status of your program
-          </p>
-
-          {/* Card Container */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-10 shadow-sm">
-            <div className="space-y-10">
-              {steps.map((step, i) => (
-                <div key={i} className="flex items-start gap-6">
-                  {/* Number Badge */}
-                  <div className="min-w-[48px] h-12 flex items-center justify-center bg-red-600 text-white font-semibold rounded-xl text-lg">
-                    {i + 1}
-                  </div>
-
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 mt-2 leading-relaxed text-sm">
-                      {step.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="py-24 bg-[#f6f8fb]">
         <div className="max-w-4xl mx-auto px-6">
-          {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0f172a]">
             Frequently Asked Questions
           </h2>
-
           <p className="text-center text-gray-500 mt-4 mb-16">
-            Common questions about accreditation
+            Common questions about recognition and frameworks
           </p>
 
-          {/* FAQ List */}
           <div className="space-y-6">
             {faqs.map((faq, i) => {
               const isOpen = active === i;
@@ -828,30 +453,23 @@ export default function AccreditationPage() {
                   key={i}
                   className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm transition"
                 >
-                  {/* Question */}
                   <button
                     onClick={() => setActive(isOpen ? null : i)}
                     className="w-full flex items-start justify-between text-left"
                   >
                     <div className="flex items-start gap-4">
-                      {/* Icon */}
                       <div className="mt-1 text-red-600">
                         <HelpCircle size={22} />
                       </div>
-
-                      {/* Title */}
-                      <h3 className="font-semibold text-gray-900 text-lg leading-snug">
+                      <h3 className="font-semibold text-gray-900 text-lg leading-snug pr-4">
                         {faq.q}
                       </h3>
                     </div>
-
-                    {/* Toggle Icon */}
-                    <div className="text-gray-500">
+                    <div className="text-gray-500 mt-1 shrink-0">
                       {isOpen ? <ChevronUp /> : <ChevronDown />}
                     </div>
                   </button>
 
-                  {/* Answer */}
                   {isOpen && (
                     <p className="text-gray-600 mt-4 pl-10 leading-relaxed text-sm">
                       {faq.a}
@@ -867,12 +485,22 @@ export default function AccreditationPage() {
       {/* CTA */}
       <section className="text-center py-20">
         <h2 className="text-3xl font-bold mb-4">
-          Choose Quality. Choose Accredited Education.
+          Make Your Decision Based on Knowledge, Not Assumptions
         </h2>
 
-        <button className="bg-red-500 text-white px-6 py-3 rounded-lg mt-4">
-          View Accredited Programs →
-        </button>
+        <p className="text-gray-500 mt-4 max-w-2xl mx-auto mb-8">
+          Choosing a university is one of the most important decisions you will make for your future.
+          If you would like personalised guidance, our advisors are here to help you compare universities.
+        </p>
+
+        <div className="flex justify-center gap-4">
+          <button className="bg-red-500 text-white px-6 py-3 rounded-lg">
+            Explore Partner Universities
+          </button>
+          <button className="border border-red-500 text-red-500 px-6 py-3 rounded-lg">
+            Talk to an Advisor
+          </button>
+        </div>
       </section>
     </main>
   );
