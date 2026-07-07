@@ -4,8 +4,28 @@ import Link from "next/link";
 import { Prisma } from "@prisma/client";
 import { FiArrowRight } from "react-icons/fi";
 
+
+interface Program {
+  id: string;
+  slug: string;
+  trending?: boolean;
+  degreeLevel: string;
+  durationMonths: number;
+  university?: {
+    name: string;
+  };
+  title: string;
+  currency?: string;
+  tuition: number;
+  heroImage?: string;
+}
 export default async function ProgramsSection() {
-const programs = await prisma.program.findMany({
+  type ProgramWithUniversity = Prisma.ProgramGetPayload<{
+  include: {
+    university: true;
+  };
+}>;
+const programs: ProgramWithUniversity[] = await prisma.program.findMany({
   include: {
     university: true,
   },
